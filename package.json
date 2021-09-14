@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.3.4",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.15"
+  },
+  "name": "myphp-framework",
+  "description": "Mon framework PHP personnel utilisant quelques paquets",
+  "version": "1.0.0",
+  "main": "none",
+  "scripts": {
+    "compile": "postcss public/css/styles.css -o public/css/compiled.css"
+  },
+  "author": "Edrow",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.3"
+  }
+}
