@@ -2,9 +2,9 @@
 use League\OAuth2\Client\Provider\Github;
 
 $provider = new Github([
-    'clientId'          => $_ENV['GH_CLIENT_ID'],
-    'clientSecret'      => $_ENV['GH_CLIENT_SECRET'],
-    'redirectUri'       => $_ENV['GH_REDIRECT_URI'],
+    'clientId' => $_ENV['GH_CLIENT_ID'],
+    'clientSecret' => $_ENV['GH_CLIENT_SECRET'],
+    'redirectUri' => $_ENV['GH_REDIRECT_URI'],
 ]);
 
 if (!isset($_GET['code'])) {

@@ -19,7 +19,7 @@ $dotenv = Dotenv\Dotenv::createImmutable($rootDir);
 $dotenv->load();
 
 // Rendu avec le système blade indépendant
-function render($template, $params)
+function render($template, $params = [])
 {
     $rootDir = dirname(__DIR__);
     $views = $rootDir . '/views';
@@ -76,7 +76,7 @@ $router->get('/connexion-github', function () {
 });
 
 $router->set404(function() {
-    render('404', []);
+    render('404');
 });
 
 $router->run();
