@@ -2,7 +2,7 @@
     <div x-show="!isOpen()" class="flex">
         <a x-show="!isOpen()" @click.prevent="handleOpen()" class="p-3 duration-75 transform cursor-pointer hover:bg-blue-500 hover:text-white">
             <i class="mr-1 text-xl align-middle fas fa-bars"></i>
-            <span class="font-semibold align-middle">{{ $app }} <span class="text-sm font-light">v2</span></span>
+            <span class="font-semibold align-middle">{{ $app }} <span class="text-sm font-light">Projet</span></span>
         </a>
     </div>
     <div class="flex ml-auto">

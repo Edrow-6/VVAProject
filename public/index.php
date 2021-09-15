@@ -4,50 +4,79 @@ use eftec\bladeone\BladeOne;
 use eftec\PdoOne;
 use eftec\ValidationOne;
 
-$root_dir = dirname(__DIR__);
-require $root_dir . '/vendor/autoload.php';
+// Si l'id de session n'existe pas, alors démarrer la session.
+if (!session_id()) {
+    session_start();
+}
 
-$val = new ValidationOne(); // Library de validation
+$rootDir = dirname(__DIR__);
+require $rootDir . '/vendor/autoload.php';
 
+$val = new ValidationOne(); // Bibliothèque de validation
 
 // Initialisation du fichier d'environement .env
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+$dotenv = Dotenv\Dotenv::createImmutable($rootDir);
 $dotenv->load();
 
 // Rendu avec le système blade indépendant
 function render($template, $params)
 {
-    $root_dir = dirname(__DIR__);
-    $views = $root_dir . '/views';
-    $cache = $root_dir . '/storage/cache';
+    $rootDir = dirname(__DIR__);
+    $views = $rootDir . '/views';
+    $cache = $rootDir . '/storage/cache';
     $blade = new BladeOne($views, $cache, BladeOne::MODE_DEBUG);
+    $blade->addAssetDict([
+        'tailwindcss' => 'assets/css/compiled.min.css',
+        'fontawesomepro' => 'assets/css/all.min.css',
+        'favicon' => 'assets/images/favicon-32x32.png'
+    ]);
     //$blade->addInclude('modules.sidebar', 'sidebar');
-    //$blade->addInclude('modules.navbar', 'navbar');
 
     echo $blade->run($template, $params);
 }
 
 // Initialisation de la base de données avec PDO
-function initDB()
+function initDatabase()
 {
-    $con = new PdoOne("mysql", $_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
-    $con->logLevel = 3; // Utile pour debug et permet de trouver les problèmes en rapport avec les requêtes MySQL.
-    $con->open();
+    $rootDir = dirname(__DIR__);
+    require $rootDir . '/config/app.php';
 
-    return $con;
+    try {
+        $conn = new PdoOne("mysql", $config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
+        $conn->logLevel = 4; // Utile pour debug et permet de trouver les problèmes en rapport avec les requêtes MySQL. 1 = prod | 4 = dev
+        $conn->open();
+    } catch (RuntimeException $e) {
+        echo 'Erreur de connexion à la base de données.';
+    }
+
+    return $conn;
 }
 
+// Création de l'instance du Router.
 $router = new Router();
-$router->get('/', function () {
-    $con = initDB();
 
-    render('home', ['titre' => 'Accueil • ', 'app' => $_ENV['APP_NAME']]); // [] = array()
+// Définition de l'espace de nom par défaut pour tout les controllers.
+$router->setNamespace('\App\Controllers');
+
+$router->get('/', function () {
+    $con = initDatabase();
+
+    render('home', ['titre' => 'Accueil • ', 'app' => 'EN TEST']); // [] = array()
 });
 
 $router->get('/connexion', function () {
-    $con = initDB();
+    $con = initDatabase();
 
     render('auth.connexion', ['titre' => 'Se connecter • ', 'app' => $_ENV['APP_NAME']]); // [] = array()
+});
+
+$router->get('/connexion-github', function () {
+    $rootDir = dirname(__DIR__);
+    include $rootDir . '/App/OAuth2/GitHub.php';
+});
+
+$router->set404(function() {
+    render('404', []);
 });
 
 $router->run();
