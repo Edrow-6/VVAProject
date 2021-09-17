@@ -8,7 +8,9 @@
       <div class="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="w-full max-w-sm mx-auto lg:w-96">
           <div>
-            <img class="w-auto h-16" src="assets/images/logo.png" alt="VVA" />
+            <a href="/">
+              <img class="w-auto h-16" src="@asset('logo')" alt="VVA">
+            </a>
             <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
               Connectez-vous<br>
               à votre compte
@@ -24,7 +26,7 @@
 
                 <div class="grid grid-cols-2 gap-3 mt-1">
                   <div>
-                    <a href="#" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50">
+                    <a href="/connexion-google" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50">
                       <span class="sr-only">Se connecter avec Twitter</span>
                       <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" class="svg-inline--fa fa-google fa-w-16 w-5 h-5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
                     </a>
