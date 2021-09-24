@@ -8,7 +8,6 @@ require __DIR__ . '/../Utils/functions.php';
 class AuthController
 {
     public function show() {
-        
         render('auth.connexion', [
             'titre' => 'Se connecter • ', 
             'app' => $_ENV['APP_NAME']
@@ -16,7 +15,7 @@ class AuthController
     }
 
     public function login() {
-        $conn = initDatabase();
+        $conn = database();
     
         if (isset($_POST['connexion'])) {
             $loginEmail = $_POST['email'];
@@ -34,9 +33,7 @@ class AuthController
                         $id = $infoClient[0]['id'];
                         $nom = $infoClient[0]['nom'];
                         $prenom = $infoClient[0]['prenom'];
-                        $pseudo = $infoClient[0]['pseudo'];
                         $email = $infoClient[0]['email'];
-                        $position = $infoClient[0]['position'];
                         $photo = $infoClient[0]['photo'];
                         $mot_de_passe = $infoClient[0]['mot_de_passe'];
                         $numero_tel = $infoClient[0]['numero_tel'];
@@ -47,14 +44,12 @@ class AuthController
                     $password = password_verify($loginPassword, $mot_de_passe);
 
                     if ($loginEmail == $email && $loginPassword == $password) {
-                        header("Location: /settings/profile");
+                        header("Location: /settings/account");
 
                         $_SESSION['id'] = $id;
                         $_SESSION['nom'] = $nom;
                         $_SESSION['prenom'] = $prenom;
-                        $_SESSION['pseudo'] = $pseudo;
                         $_SESSION['email'] = $email;
-                        $_SESSION['position'] = $position;
                         $_SESSION['photo'] = $photo;
                         $_SESSION['numero_tel'] = $numero_tel;
                         $_SESSION['type_compte'] = $type_compte;
@@ -74,5 +69,11 @@ class AuthController
                 }
             }
         }
+    }
+
+    public function logout() {
+        session_destroy();
+
+        header('Location: /');
     }
 }

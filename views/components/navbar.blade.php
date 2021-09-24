@@ -154,7 +154,7 @@
                 </div>
                 <div class="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8 justify-center">
                   <div class="flow-root">
-                    <a href="/settings/profile" class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150">
+                    <a href="/settings/account" class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150">
                       <i class="fad fa-cog fa-spin fa-swap-opacity fa-lg flex-shrink-0 text-gray-400"></i>
                       <span class="ml-3">Paramètres</span>
                     </a>
