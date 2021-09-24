@@ -257,15 +257,8 @@
                 Lorem Ipsum Mobile
               </a>
 
-              <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                Lorem Ipsum Mobile
-              </a>
-
-              <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                Lorem Ipsum Mobile
-              </a>
-
             </div>
+            {{-- A faire avec session --}}
             <div class="mt-6">
               <a href="/auth/login" class="w-full transform hover:scale-105 duration-150 flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600">
                 Se connecter

@@ -66,6 +66,7 @@
                       type="email"
                       autocomplete="email"
                       required=""
+                      value="@if(isset($_COOKIE['remember-me'])) {{ $_COOKIE["remember-me"] }} @endif"
                       class="block w-full transition duration-100 px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-blue-400 focus:border-blue-400 sm:text-sm"
                     />
                   </div>
@@ -99,7 +100,7 @@
 
                 <div class="flex items-center justify-between">
                   <div class="flex items-center">
-                    <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 cursor-pointer text-blue-500 transition duration-100 border-gray-300 rounded focus:ring-blue-400" />
+                    <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 cursor-pointer text-blue-500 transition duration-100 border-gray-300 rounded focus:ring-blue-400" @if(isset($_COOKIE['remember-me'])) checked @endif/>
                     <label for="remember-me" class="block ml-2 cursor-pointer select-none text-sm text-gray-900">
                       Se souvenir de moi
                     </label>
@@ -115,7 +116,7 @@
                 <div>
                   <button
                     type="submit"
-                    name="connexion"
+                    name="login"
                     class="flex justify-center w-full transform hover:scale-105 hover:shadow duration-150 px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
                     Se connecter

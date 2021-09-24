@@ -47,7 +47,7 @@ CREATE TABLE utilisateurs (
   photo             varchar(255) NOT NULL, 
   mot_de_passe      varchar(20) DEFAULT 'NULL', 
   numero_tel        varchar(15) DEFAULT 'NULL', 
-  type_compte       varchar(5) DEFAULT 'NULL', 
+  type_compte       varchar(10) DEFAULT 'NULL', 
   cree_le           timestamp DEFAULT current_timestamp() NOT NULL, 
   modifie_le        timestamp DEFAULT current_timestamp() NOT NULL, 
   PRIMARY KEY (id));

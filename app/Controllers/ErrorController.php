@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 //use function App\Utils\render;
-require __DIR__ . '/../Utils/functions.php';
+require __DIR__.'/../Utils/functions.php';
 
 class ErrorController
 {
