@@ -8,7 +8,7 @@
   },
   "name": "myphp-framework",
   "description": "Mon framework PHP personnel utilisant quelques paquets",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "main": "none",
   "scripts": {
     "compile": "postcss public/assets/css/styles.css -o public/assets/css/compiled.min.css"

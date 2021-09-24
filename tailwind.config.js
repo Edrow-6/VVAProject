@@ -2,12 +2,16 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ["./src/**/*.html", "./src/**/*.js"],
+  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
+    },
     colors: {
-      // Build your palette here
       transparent: 'transparent',
       current: 'currentColor',
       gray: colors.coolGray,

@@ -3,6 +3,7 @@
 // Déclarations des variables de configuration.
 $config = array(
     'app_name' => $_ENV['APP_NAME'],
+    'app_debug' => $_ENV['APP_DEBUG'],
 
     'db_host' => $_ENV['DB_HOST'],
     'db_user' => $_ENV['DB_USER'],
