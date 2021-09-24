@@ -59,8 +59,13 @@ $router->before('GET|POST', '/settings/.*', function () {
 
 $router->mount('/settings', function () use ($router) {
     $router->get('/account', 'SettingsController@account');
+    $router->post('/account', 'SettingsController@saveAccount');
+
     $router->get('/security', 'SettingsController@security');
+    $router->post('/security', 'SettingsController@SaveSecurity');
+
     $router->get('/billing', 'SettingsController@billing');
+    $router->post('/billing', 'SettingsController@saveBilling');
 });
 
 // Panel Utilisateur

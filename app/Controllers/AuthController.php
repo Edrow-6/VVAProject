@@ -58,6 +58,7 @@ class AuthController
                         $_SESSION['type_compte'] = $type_compte;
                         $_SESSION['cree_le'] = $cree_le;
                         $_SESSION['modifie_le'] = $modifie_le;
+                        session_write_close();
 
                         header("Location: /settings/account");
                     } else {

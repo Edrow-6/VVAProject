@@ -70,12 +70,12 @@ class User
     }
 
     /** Met à jour un enregistrement */
-    public static function update($obj)
+    public static function update($pk, $obj)
     {
         return self::getPdo()
             ->from(self::TABLE)
             ->set($obj)
-            ->where(self::PK, $obj[self::PK])
+            ->where(self::PK.'=:id', ['id' => $pk])
             ->update();
     }
 

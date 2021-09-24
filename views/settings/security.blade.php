@@ -4,10 +4,10 @@
 @section('content')
 @include('components.navbar')
 
-<div class="lg:grid lg:grid-cols-12 lg:gap-x-5 mt-6 mb-6">
+<div class="lg:grid lg:grid-cols-12 lg:gap-x-5 mt-6 min-h-screen">
   @include('settings.components.sidenav')
 
-  <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9 mr-6">
+  <div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9 lg:mr-6">
     <form action="#" method="POST">
       <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          <button type="submit" class="bg-blue-500 border border-transparent transform hover:scale-105 hover:shadow duration-150 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+          <button type="submit" name="save" class="bg-blue-500 border border-transparent transform hover:scale-105 hover:shadow duration-150 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
             Sauvegarder
           </button>
         </div>
