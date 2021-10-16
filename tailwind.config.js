@@ -22,12 +22,16 @@ module.exports = {
       green: colors.green,
       emerald: colors.emerald,
       teal: colors.teal,
+      sky: colors.sky,
+      cyan: colors.cyan,
       indigo: colors.indigo,
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       orange: colors.orange,
       white: colors.white,
       black: colors.black,
+      twitter: '#1da1f2',
+      github: '#333'
     },
     fontFamily: {
       sans: ['Manrope', ...defaultTheme.fontFamily.sans],
@@ -36,5 +40,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms"), require('@tailwindcss/line-clamp')],
 };

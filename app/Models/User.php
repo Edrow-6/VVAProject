@@ -2,10 +2,7 @@
 
 namespace App\Models;
 
-use eftec\PdoOne;
-use Exception;
-use PDOStatement;
-
+// Utilisateur
 class User
 {
     const TABLE = 'utilisateurs';

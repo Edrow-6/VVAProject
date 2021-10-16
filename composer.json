@@ -16,13 +16,14 @@
         }
     },
     "require": {
-        "eftec/bladeone": "^3.52",
+        "eftec/bladeone": "^4.1",
         "bramus/router": "~1.5",
         "eftec/pdoone": "^2.13",
         "vlucas/phpdotenv": "^5.3",
         "eftec/validationone": "^1.30",
         "league/oauth2-github": "^3.0",
         "league/oauth2-google": "^4.0",
-        "symfony/error-handler": "^5.3"
+        "symfony/error-handler": "^5.3",
+        "lasserafn/php-initial-avatar-generator": "dev-master"
     }
 }

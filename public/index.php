@@ -3,7 +3,7 @@
 use Bramus\Router\Router;
 use Symfony\Component\ErrorHandler\Debug;
 
-// Init des accès aux bibliothèques.
+// Init des accès aux librairies.
 require __DIR__.'/../vendor/autoload.php';
 
 // Initialisation du fichier d'environement .env
@@ -56,20 +56,26 @@ $router->before('GET|POST', '/settings/.*', function () {
         exit();
     }
 });
+$router->before('GET|POST', '/auth/login', function () {
+    if (isset($_SESSION['id'])) {
+        header('location: /');
+        exit();
+    }
+});
 
 $router->mount('/settings', function () use ($router) {
     $router->get('/account', 'SettingsController@account');
     $router->post('/account', 'SettingsController@saveAccount');
 
     $router->get('/security', 'SettingsController@security');
-    $router->post('/security', 'SettingsController@SaveSecurity');
+    $router->post('/security', 'SettingsController@saveSecurity');
 
     $router->get('/billing', 'SettingsController@billing');
     $router->post('/billing', 'SettingsController@saveBilling');
 });
 
 // Panel Utilisateur
-$router->before('GET|POST', '/dash/.*', function () {
+$router->before('GET|POST', '/dash', function () {
     if (!isset($_SESSION['id'])) {
         header('location: /auth/login');
         exit();
@@ -93,3 +99,5 @@ $router->before('GET|POST', '/dash/admin/.*', function () {
 $router->mount('/dash/admin', function () use ($router) {});
 
 $router->run();
+
+

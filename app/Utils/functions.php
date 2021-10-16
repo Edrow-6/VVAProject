@@ -24,8 +24,12 @@ function render($template, $params = []): void
         $blade->addAssetDict([
             'tailwindcss' => '../assets/css/compiled.min.css',
             'fontawesomepro' => '../assets/css/all.min.css',
+            'app' => '../assets/js/app.js',
             'favicon' => '../assets/images/favicon-32x32.png',
-            'logo' => '../assets/images/logo.png',
+            'logo_teal_dark' => '../assets/images/logo_teal_dark.png',
+            'logo_teal_light' => '../assets/images/logo_teal_light.png',
+            'logo_dark' => '../assets/images/logo_dark.png',
+            'logo_light' => '../assets/images/logo_light.png'
         ]);
     }
 

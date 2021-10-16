@@ -1,6 +1,6 @@
-<header x-data="{ stick: false }" class="sticky top-0 bg-white z-50">
+<header x-data="{ stick: false }" class="sticky top-0 z-50">
     <div x-data="{ open: false }" :class="{ 'shadow transition duration-200' : stick }" @scroll.window="stick = (window.pageYOffset > 20) ? true : false">
-      <div :class="{ 'py-3' : stick, 'py-6' : !stick }" class="flex justify-between transition-spacing duration-200 items-center max-w-7xl mx-auto px-4 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
+      <div :class="{ 'py-3 bg-white' : stick, 'py-6 bg-gray-100' : !stick }" class="flex justify-between transition-spacing duration-200 items-center max-w-7xl mx-auto px-4 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
         <div class="flex justify-start lg:w-0 lg:flex-1">
           <a href="/">
             <span class="sr-only">VVA</span>
