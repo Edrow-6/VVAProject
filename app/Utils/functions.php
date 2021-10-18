@@ -6,13 +6,22 @@ declare(strict_types=1);
 
 use eftec\bladeone\BladeOne;
 use eftec\PdoOne;
+use Tamtamchik\SimpleFlash\Flash;
+use Tamtamchik\SimpleFlash\TemplateFactory;
+use Tamtamchik\SimpleFlash\Templates;
 use eftec\ValidationOne;
 
 $blade = null;
 $pdo = null;
 $validation = null;
 
-// Rendu des vues/pages avec le système Blade
+/**
+ * Rendu des vues/pages avec le système Blade
+ *
+ * @param string $template
+ * @param array $params
+ * @return void
+ */
 function render($template, $params = []): void
 {
     global $blade;
@@ -48,7 +57,11 @@ function render($template, $params = []): void
     echo $blade->run($template, $params);
 }
 
-// Initialisation de la base de données avec PDO
+/**
+ * Initialisation de la base de données avec PDO
+ *
+ * @return eftec\PdoOne
+ */
 function database(): eftec\PdoOne
 {
     require __DIR__ . '/../../config/app.php';
@@ -63,6 +76,19 @@ function database(): eftec\PdoOne
     return $pdo;
 }
 
+function alert($message, $type = 'info')
+{
+    $template = TemplateFactory::create(Templates::TAILWIND);
+
+    $flash = new Flash($template);
+    $flash->message($message, $type);
+}
+
+/**
+ * Validation des entrées (input) avec des conditions
+ *
+ * @return eftec\ValidationOne
+ */
 function validation(): eftec\ValidationOne
 {
     global $validation;
@@ -72,7 +98,14 @@ function validation(): eftec\ValidationOne
     return $validation;
 }
 
-function debug($type, $message): void
+/**
+ * Affiche une bannière pour debugger une variable ou une fonction
+ *
+ * @param string $type
+ * @param void $function
+ * @return void
+ */
+function debug($type, $function): void
 {
     if ($_ENV['APP_DEBUG']) {
         switch ($type) {
@@ -108,7 +141,7 @@ function debug($type, $message): void
             </span>
             <span class="hidden md:inline">
         EOF;
-        var_dump($message);
+        var_dump($function);
         echo <<<EOF
             </span>
             </p>

@@ -3,6 +3,9 @@
 use Bramus\Router\Router;
 use Symfony\Component\ErrorHandler\Debug;
 
+// Si l'id de session n'existe pas, alors démarrer la session.
+if (!session_id()) @session_start();
+
 // Init des accès aux librairies.
 require __DIR__.'/../vendor/autoload.php';
 
@@ -15,11 +18,6 @@ require __DIR__.'/../config/app.php';
 
 // Afficher les erreurs php si non activé dans php.ini
 ini_set('display_errors', 'on');
-
-// Si l'id de session n'existe pas, alors démarrer la session.
-if (!session_id()) {
-    session_start();
-}
 
 if ($config['app_debug']) {
     Debug::enable();
@@ -36,11 +34,6 @@ $router->mount('/auth', function () use ($router) {
     $router->mount('/login', function () use ($router) {
         $router->get('/', 'AuthController@show');
         $router->post('/', 'AuthController@login');
-
-        $router->mount('/api', function () use ($router) {
-            $router->get('/github', 'ApiController@github');
-            $router->get('/google', 'ApiController@google');
-        });
     });
 
     $router->get('/logout', 'AuthController@logout');

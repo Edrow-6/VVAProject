@@ -1,7 +1,7 @@
 @extends('layouts.app', ['page_type' => 'error', 'body_classes' => 'bg-white min-h-[700px] md:min-h-[896px]'])
 
 @section('content')
-<main class="min-h-screen bg-cover bg-top sm:bg-top" style="background-image: url('https://cdn.pixabay.com/photo/2018/07/07/11/30/success-3521937_960_720.jpg');">
+<main class="min-h-screen bg-cover bg-top sm:bg-top" style="background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
   <div class="max-w-7xl mx-auto px-4 py-16 text-center sm:px-6 sm:py-24 lg:px-8 lg:py-48">
     <p class="text-sm font-semibold text-blue-200 text-opacity-75 uppercase tracking-wide">Erreur 404</p>
     <h1 class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Oh non ! On dirait que vous êtes perdu.</h1>

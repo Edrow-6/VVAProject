@@ -8,17 +8,16 @@ require __DIR__.'/../Utils/functions.php';
 class HomeController
 {
     public function show() {
-        $nom = $prenom = '';
         if ($_SESSION) {
-            $nom = $_SESSION['nom'];
-            $prenom = $_SESSION['prenom'];
+            $nom = isset($_SESSION['nom']) ? $_SESSION['nom'] : '';
+            $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
         }
 
         render('home', [
-            'titre' => 'Accueil • ', 
+            'titre' => 'Accueil', 
             'app' => $_ENV['APP_NAME'], 
-            'nom' => $nom, 
-            'prenom' => $prenom
+            'nom' => $nom = '', 
+            'prenom' => $prenom = ''
         ]); // [] = array()
     }
     

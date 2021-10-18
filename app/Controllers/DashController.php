@@ -35,7 +35,7 @@ class DashController
         $types_heb = Lodging::selectType();
         
         render('dashboard.index', [
-            'titre' => 'Tableau de Bord • ', 
+            'titre' => 'Tableau de Bord', 
             'app' => $_ENV['APP_NAME'],
             'page' => 'dashboard',
             'nom' => $nom, 

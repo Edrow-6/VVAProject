@@ -1,5 +1,5 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('settings.layout', ['page_type' => 'security', 'body_classes' => 'bg-gray-100'])
+@extends('settings.layout', ['page_type' => 'security', 'body_classes' => 'bg-gray-200'])
 
 @section('content')
 <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">

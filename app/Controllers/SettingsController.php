@@ -20,7 +20,7 @@ class SettingsController
         }
 
         render('settings.account', [
-            'titre' => 'Paramètres Compte • ', 
+            'titre' => 'Paramètres Compte', 
             'app' => $_ENV['APP_NAME'], 
             'page' => 'account',
             'nom' => $nom, 
@@ -29,7 +29,7 @@ class SettingsController
             'numero_tel' => $numero_tel,
             //'avatar' => "../assets/uploads/avatars/{$_SESSION['avatar']}"
             'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'
-        ]); // [] = array()
+        ]);
     }
 
     public function saveAccount() {
@@ -42,7 +42,7 @@ class SettingsController
             $_SESSION['numero_tel'] = $_POST['phone-number'];
 
             $target = __DIR__.'/../../storage/uploads/avatars/';
-            symlink($target, __DIR__.'/../../public/assets/uploads/avatars/link');
+            //symlink($target, __DIR__.'/../../public/assets/uploads/avatars/link');
 
             $filename = md5($_SESSION['prenom'].$_SESSION['nom']);
             //$filename = basename($_FILES["user-photo"]["name"]);
@@ -66,8 +66,6 @@ class SettingsController
                 } else {
                     echo 'Le fichier existe deja';
                 }
-            } else {
-                echo 'Input Avatar vide';
             }
 
             /*if (!empty($_FILES['user-photo']['name'])) {
@@ -81,7 +79,7 @@ class SettingsController
 
 
         }
-        //header('Location: /settings/account');
+        header('Location: /settings/account');
     }
 
     public function security() {
@@ -93,13 +91,14 @@ class SettingsController
         }
         
         render('settings.security', [
-            'titre' => 'Paramètres Sécurité • ', 
+            'titre' => 'Paramètres Sécurité', 
             'app' => $_ENV['APP_NAME'], 
             'page' => 'security',
             'nom' => $nom, 
             'prenom' => $prenom,
-            'email' => $email
-        ]); // [] = array()
+            'email' => $email,
+            'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'
+        ]);
     }
 
     public function saveSecurity() {
@@ -127,18 +126,19 @@ class SettingsController
         }
 
         render('settings.billing', [
-            'titre' => 'Paramètres Facturation • ', 
+            'titre' => 'Paramètres Facturation', 
             'app' => $_ENV['APP_NAME'], 
             'page' => 'billing',
             'nom' => $nom, 
             'prenom' => $prenom,
-            'email' => $email
-        ]); // [] = array()
+            'email' => $email,
+            'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'
+        ]);
     }
 
     public function saveBilling() {
         if (isset($_POST['save-billing'])) {
-            // COMMING SOON
+            // A faire
         }
     }
 }

@@ -9,7 +9,7 @@ class ErrorController
 {
     public function show() {
         render('404', [
-            'titre' => 'Erreur 404 • ', 
+            'titre' => 'Erreur 404', 
             'app' => $_ENV['APP_NAME']
         ]); // [] = array()
     }

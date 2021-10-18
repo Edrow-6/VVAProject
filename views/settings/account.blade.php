@@ -1,5 +1,5 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('settings.layout', ['page_type' => 'account', 'body_classes' => 'bg-gray-100'])
+@extends('settings.layout', ['page_type' => 'account', 'body_classes' => 'bg-gray-200'])
 
 @section('content')
 <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST" enctype="multipart/form-data">
@@ -16,24 +16,24 @@
       <div class="flex-grow space-y-6">
         
         <div class="grid grid-cols-6 gap-6">
-          <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="block text-sm font-medium text-gray-700">Prénom</label>
-            <input type="text" name="first-name" id="first-name" autocomplete="given-name" value="{{ $prenom }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+          <div class="col-span-6 sm:col-span-3 bg-white focus:shadow border border-transparent rounded-lg px-3 py-2 shadow-sm transition duration-150 focus-within:ring-1 focus-within:ring-sky-400 focus-within:border-sky-400 mt-1">
+            <label for="first-name" class="block text-xs font-medium text-gray-700">Prénom</label>
+            <input type="text" name="first-name" id="first-name" autocomplete="given-name" value="{{ $prenom }}" required="" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm">
           </div>
 
-          <div class="col-span-6 sm:col-span-3">
-            <label for="last-name" class="block text-sm font-medium text-gray-700">Nom de famille</label>
-            <input type="text" name="last-name" id="last-name" autocomplete="family-name" value="{{ $nom }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+          <div class="col-span-6 sm:col-span-3 bg-white focus:shadow border border-transparent rounded-lg px-3 py-2 shadow-sm transition duration-150 focus-within:ring-1 focus-within:ring-sky-400 focus-within:border-sky-400 mt-1">
+            <label for="last-name" class="block text-xs font-medium text-gray-700">Nom de famille</label>
+            <input type="text" name="last-name" id="last-name" autocomplete="family-name" value="{{ $nom }}" required="" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm">
           </div>
 
-          <div class="col-span-6 sm:col-span-3">
-            <label for="email-address" class="block text-sm font-medium text-gray-700">Adresse e-mail</label>
-            <input type="email" name="email-address" id="email-address" autocomplete="email" value="{{ $email }}" class="mt-1 block transition duration-100 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+          <div class="col-span-6 sm:col-span-3 bg-white focus:shadow border border-transparent rounded-lg px-3 py-2 shadow-sm transition duration-150 focus-within:ring-1 focus-within:ring-sky-400 focus-within:border-sky-400 mt-1">
+            <label for="email-address" class="block text-xs font-medium text-gray-700">Adresse e-mail</label>
+            <input type="email" name="email-address" id="email-address" autocomplete="email" value="{{ $email }}" required="" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm">
           </div>
 
-          <div class="col-span-6 sm:col-span-3">
-            <label for="phone-number" class="block text-sm font-medium text-gray-700">Numéro de téléphone</label>
-            <input type="tel" name="phone-number" id="phone-number" autocomplete="number" pattern="[0-9]{10,10}" value="{{ $numero_tel }}" class="mt-1 block transition duration-100 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+          <div class="col-span-6 sm:col-span-3 bg-white focus:shadow border border-transparent rounded-lg px-3 py-2 shadow-sm transition duration-150 focus-within:ring-1 focus-within:ring-sky-400 focus-within:border-sky-400 mt-1">
+            <label for="phone-number" class="block text-xs font-medium text-gray-700">Numéro de téléphone</label>
+            <input type="tel" name="phone-number" id="phone-number" autocomplete="number" pattern="[0-9]{10,10}" value="{{ $numero_tel }}" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm">
           </div>
         </div>
 
@@ -100,12 +100,19 @@
       </ul>
     </div>
     <div class="mt-4 py-4 px-4 flex justify-end sm:px-6">
-      <button type="button" class="bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+      <button type="button" class="bg-white border border-gray-300 rounded-md shadow-sm py-1.5 px-4 inline-flex justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
         Annuler
       </button>
-      <button type="submit" name="save-account" class="ml-5 bg-sky-700 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-        Sauvegarder
-      </button>
+      <div class="ml-5 relative group transform hover:scale-105 hover:shadow duration-150 rounded-md">
+        <div class="absolute -inset-0 bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 rounded-lg filter blur opacity-50 group-hover:opacity-75 transition duration-150 group-hover:duration-150"></div>
+        <button
+          type="submit"
+          name="save-account"
+          class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-sky-600 to-sky-700 rounded-md shadow-sm hover:from-sky-700 hover:to-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+        >
+          Sauvegarder
+        </button>
+      </div>
     </div>
   </div>
 </form>

@@ -16,7 +16,7 @@ class AuthController
      */
     public function show() {
         render('auth.login', [
-            'titre' => 'Se connecter • ', 
+            'titre' => 'Se connecter', 
             'app' => $_ENV['APP_NAME']
         ]);
     }
@@ -49,22 +49,6 @@ class AuthController
                     $type_compte = $infoClient[0]['type_compte'];
                     $cree_le = $infoClient[0]['cree_le'];
                     $modifie_le = $infoClient[0]['modifie_le'];
-
-                    /**
-                     * Si inscription générer une photo de profil:
-                     * 
-                     * $avatar = new LasseRafn\InitialAvatarGenerator\InitialAvatar();
-                     * $image = $avatar->name(`{$nom} {$prenom}`)->generate();
-                     * return $image->stream('png', 100); ( ->save(); )
-                     * 
-                     * $target = 'storage/uploads/';
-                     * $link = 'uploads';
-                     * symlink($target, $link);
-                     * 
-                     * $filename = md5($nom.$prenom).'png';
-                     * $final_url = readlink($link).$filename;
-                     */ 
-
 
                     $password = password_verify($loginPassword, $mot_de_passe);
 
@@ -110,6 +94,21 @@ class AuthController
      */
     public function register() {
         // A faire
+
+        /**
+         * Si inscription générer une photo de profil:
+         * 
+         * $avatar = new LasseRafn\InitialAvatarGenerator\InitialAvatar();
+         * $image = $avatar->name(`{$nom} {$prenom}`)->generate();
+         * return $image->stream('png', 100); ( ->save(); )
+         * 
+         * $target = 'storage/uploads/'; |
+         * $link = 'uploads';            | A REFACTORISER
+         * symlink($target, $link);      |
+         * 
+         * $filename = md5($nom.$prenom).'png';
+         * $final_url = readlink($link).$filename;
+         */ 
     }
 
     /**

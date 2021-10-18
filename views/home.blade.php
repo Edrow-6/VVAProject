@@ -26,10 +26,10 @@
                 </p>
                 <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                   <div class="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                    <a href="#" class="flex transform hover:-translate-y-0.5 duration-150 items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-blue-50 sm:px-8">
+                    <a href="#" class="flex transform hover:-translate-y-0.5 duration-150 items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm hover:text-blue-600 bg-white text-white bg-opacity-50 backdrop-filter backdrop-blur-md hover:bg-opacity-70 sm:px-8">
                       Réservations
                     </a>
-                    <a href="#" class="flex transform hover:-translate-y-0.5 duration-150 items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
+                    <a href="#" class="flex transform hover:-translate-y-0.5 duration-150 items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-200 hover:text-white bg-blue-500 bg-opacity-50 backdrop-filter backdrop-blur-md hover:bg-opacity-70 sm:px-8">
                       Lieux disponibles
                     </a>
                   </div>

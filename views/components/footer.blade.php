@@ -1,4 +1,4 @@
-<footer class="bg-gray-200 shadow-inner">
+<footer class="bg-gray-300 shadow-inner">
   <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
     <div class="flex justify-center space-x-6 md:order-2">
       <a href="https://twitter.com/Edrow__" class="text-twitter transform hover:scale-110 duration-150 hover:text-blue-600">
@@ -17,7 +17,7 @@
     </div>
     <div class="flex space-x-4 mt-8 md:mt-0 md:order-1">
       <img class="w-10" src="@asset('logo_dark')">
-      <p class="text-center text-base text-gray-400">
+      <p class="text-center text-base text-gray-500">
         {{-- &copy; date('Y') Dawbee, Assoc. Tous droits réservés. --}}
         <i class="fal fa-code text-gray-700"></i> en France avec <i class="fal fa-heart text-red-700"></i> par Edrow
       </p>

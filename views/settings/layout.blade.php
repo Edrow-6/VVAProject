@@ -4,9 +4,9 @@
     @include('components.head')
 </head>
 <body @unless(empty($body_classes)) class="{{ $body_classes }}" @endunless>
-    <div>
+    <div style="background-image: url(../assets/images/flat-mountains.svg);background-position: bottom;background-size: cover;">
         <div x-data="{ mainMenu: false }" class="relative bg-sky-700 pb-32 overflow-hidden">
-          <!-- Menu open: "bg-sky-900", Menu closed: "bg-transparent" -->
+          <!-- Menu ouvert: "bg-sky-900", Menu closed: "bg-transparent" -->
           <nav :class="{ 'bg-sky-900': mainMenu, 'bg-transparent': !mainMenu }" class="relative z-10 border-b border-teal-500 border-opacity-25 lg:bg-transparent lg:border-none">
             <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
               <div class="relative h-16 flex items-center justify-between lg:border-b lg:border-sky-800">
@@ -18,7 +18,7 @@
                   </div>
                   <div class="hidden lg:block lg:ml-6 lg:space-x-4">
                     <div class="flex">
-                      <!-- Current: "bg-black bg-opacity-25", Default: "hover:bg-sky-800" -->
+                      <!-- Actuel: "bg-black bg-opacity-25", Defau: "hover:bg-sky-800" -->
                       <a href="#" class="bg-black bg-opacity-25 rounded-md py-2 px-3 text-sm font-medium text-white">Hébergements</a>
       
                       <a href="#" class="hover:bg-sky-800 rounded-md py-2 px-3 text-sm font-medium text-white">Autre</a>
@@ -31,17 +31,14 @@
                     <label for="search" class="sr-only">Rechercher</label>
                     <div class="relative text-sky-100 focus-within:text-gray-400">
                       <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center">
-                        <!-- Heroicon name: solid/search -->
-                        <svg class="flex-shrink-0 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                        </svg>
+                        <i class="far fa-search"></i>
                       </div>
                       <input id="search" name="search" class="block w-full bg-sky-700 bg-opacity-50 py-2 pl-10 pr-3 border border-transparent rounded-md leading-5 placeholder-sky-100 focus:outline-none focus:bg-white focus:ring-white focus:border-white focus:placeholder-gray-500 focus:text-gray-900 sm:text-sm" placeholder="Rechercher" type="search">
                     </div>
                   </div>
                 </div>
                 <div class="flex lg:hidden">
-                  <!-- Mobile menu button -->
+                  {{-- Bouton menu mobile --}}
                   <button type="button" @click="mainMenu = !mainMenu" class="p-2 rounded-md inline-flex items-center justify-center text-sky-200 hover:text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Ouvrir le menu principal</span>
 
@@ -190,7 +187,7 @@
 
         <main class="relative -mt-32">
           <div class="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
-            <div class="bg-white rounded-lg shadow overflow-hidden">
+            <div class="bg-white bg-opacity-75 backdrop-filter backdrop-blur-md rounded-lg shadow overflow-hidden">
               <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
                 @include('settings.components.sidenav')
         
