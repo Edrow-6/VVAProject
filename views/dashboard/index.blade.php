@@ -1,5 +1,5 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('dashboard.layout', ['page_type' => 'dashboard', 'body_classes' => 'bg-gray-100'])
+@extends('dashboard.layout', ['title' => 'Tableau de Bord', 'page_type' => 'dashboard', 'body_classes' => 'bg-gray-100'])
 
 @section('content')
 <section aria-labelledby="message-heading" class="min-w-0 flex-1 h-full flex flex-col overflow-hidden xl:order-last">

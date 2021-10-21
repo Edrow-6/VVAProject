@@ -1,5 +1,5 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('settings.layout', ['page_type' => 'account', 'body_classes' => 'bg-gray-200'])
+@extends('settings.layout', ['title' => 'Paramètres Compte', 'page_type' => 'account', 'body_classes' => 'bg-gray-200'])
 
 @section('content')
 <form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST" enctype="multipart/form-data">
@@ -7,7 +7,7 @@
   <div class="py-6 px-4 sm:p-6 lg:pb-8">
     <div>
       <h2 class="text-lg leading-6 font-medium text-gray-900">Compte</h2>
-      <p class="mt-1 text-sm text-gray-500">
+      <p class="mt-1 text-sm text-gray-600">
         Ces informations ne seront pas affichées publiquement.
       </p>
     </div>
@@ -77,7 +77,7 @@
     <div class="px-4 sm:px-6">
       <div>
         <h2 class="text-lg leading-6 font-medium text-gray-900">Vie privée</h2>
-        <p class="mt-1 text-sm text-gray-500">
+        <p class="mt-1 text-sm text-gray-600">
           Quel option souhaitez vous activer ou désactiver.
         </p>
       </div>
@@ -87,7 +87,7 @@
             <p class="text-sm font-medium text-gray-900" id="privacy-option-1-label">
               Cookies
             </p>
-            <p class="text-sm text-gray-500" id="privacy-option-1-description">
+            <p class="text-sm text-gray-600" id="privacy-option-1-description">
               Permet de stocker des clés/variables utilisées pour l'utilisation du site.
             </p>
           </div>
@@ -104,11 +104,11 @@
         Annuler
       </button>
       <div class="ml-5 relative group transform hover:scale-105 hover:shadow duration-150 rounded-md">
-        <div class="absolute -inset-0 bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 rounded-lg filter blur opacity-50 group-hover:opacity-75 transition duration-150 group-hover:duration-150"></div>
+        <div class="absolute -inset-0 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 rounded-lg filter blur opacity-50 group-hover:opacity-75 transition duration-150 group-hover:duration-150"></div>
         <button
           type="submit"
           name="save-account"
-          class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-sky-600 to-sky-700 rounded-md shadow-sm hover:from-sky-700 hover:to-sky-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
+          class="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-sky-400 to-sky-500 rounded-md shadow-sm hover:from-sky-500 hover:to-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
         >
           Sauvegarder
         </button>
@@ -116,6 +116,13 @@
     </div>
   </div>
 </form>
+@endsection
+
+@section('script')
+<script>
+  // Cache les notifications au bout de x seconde(s)
+  $("#alert").show().delay(2500).fadeOut();
+</script>
 @endsection
 
 

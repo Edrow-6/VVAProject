@@ -19,9 +19,9 @@
                   <div class="hidden lg:block lg:ml-6 lg:space-x-4">
                     <div class="flex">
                       <!-- Actuel: "bg-black bg-opacity-25", Defau: "hover:bg-sky-800" -->
-                      <a href="#" class="bg-black bg-opacity-25 rounded-md py-2 px-3 text-sm font-medium text-white">Hébergements</a>
+                      <a href="#" class="bg-black bg-opacity-25 rounded-md py-2 px-3 text-sm font-medium text-white">Accueil</a>
       
-                      <a href="#" class="hover:bg-sky-800 rounded-md py-2 px-3 text-sm font-medium text-white">Autre</a>
+                      <a href="#" class="hover:bg-sky-800 rounded-md py-2 px-3 text-sm font-medium text-white">Hébergements</a>
       
                     </div>
                   </div>
@@ -188,7 +188,7 @@
         <main class="relative -mt-32">
           <div class="max-w-screen-xl mx-auto pb-6 px-4 sm:px-6 lg:pb-16 lg:px-8">
             <div class="bg-white bg-opacity-75 backdrop-filter backdrop-blur-md rounded-lg shadow overflow-hidden">
-              <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+              <div class="divide-y divide-white divide-opacity-25 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x-2">
                 @include('settings.components.sidenav')
         
                 @yield('content')
@@ -196,10 +196,16 @@
             </div>
           </div>
         </main>
-      
       </div>
 
     @include('components.footer')
+
+    <div aria-live="assertive" class="fixed z-50 inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+      <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
+        @if(isset($flash)) {!! $flash !!} @endif
+      </div>
+    </div>
+
     @include('components.scripts')
 </body>
 </html>

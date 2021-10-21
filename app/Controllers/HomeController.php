@@ -3,22 +3,25 @@
 namespace App\Controllers;
 
 //use function App\Utils\render;
+use Exception;
+
 require __DIR__.'/../Utils/functions.php';
 
 class HomeController
 {
+    /**
+     * @throws Exception
+     */
     public function show() {
         if ($_SESSION) {
-            $nom = isset($_SESSION['nom']) ? $_SESSION['nom'] : '';
-            $prenom = isset($_SESSION['prenom']) ? $_SESSION['prenom'] : '';
+            $nom = $_SESSION['nom'] ?? '';
+            $prenom = $_SESSION['prenom'] ?? '';
         }
 
         render('home', [
-            'titre' => 'Accueil', 
-            'app' => $_ENV['APP_NAME'], 
             'nom' => $nom = '', 
             'prenom' => $prenom = ''
-        ]); // [] = array()
+        ]);
     }
     
     public function pastebin() {

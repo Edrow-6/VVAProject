@@ -25,6 +25,8 @@
         "league/oauth2-google": "^4.0",
         "symfony/error-handler": "^5.3",
         "lasserafn/php-initial-avatar-generator": "dev-master",
-        "tamtamchik/simple-flash": "3.0.x-dev"
+        "tamtamchik/simple-flash": "3.0.x-dev",
+        "ext-curl": "*",
+        "ext-pdo": "*"
     }
 }

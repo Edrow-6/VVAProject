@@ -3,21 +3,22 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use Exception;
 
 //use function App\Utils\render;
 require __DIR__ . '/../Utils/functions.php';
 
-class AuthController
+class LoginController
 {
     /**
      * Méthode d'affichage de la page avec des variables
      *
      * @return void
+     * @throws Exception
      */
-    public function show() {
+    public function show($flash = '') {
         render('auth.login', [
-            'titre' => 'Se connecter', 
-            'app' => $_ENV['APP_NAME']
+            'flash' => $flash
         ]);
     }
 
@@ -25,6 +26,7 @@ class AuthController
      * Méthode de connexion
      *
      * @return void
+     * @throws Exception
      */
     public function login() {
         if (isset($_POST['login'])) {
@@ -37,7 +39,8 @@ class AuthController
             if (!empty($loginEmail) && !empty($loginPassword)) {
                 // Si l'email entrée ne correspond à aucun email de la bdd.
                 if (isset($infoClient[0]) <= 0) {
-                    echo "L'utilisateur n'existe pas dans la base de données.";
+                    $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Cette adresse e-mail n\'est pas enregistrée.</p>'], 'error');
+                    $this->show($flash);
                 } else {
                     $id = $infoClient[0]['id'];
                     $nom = $infoClient[0]['nom'];
@@ -59,7 +62,7 @@ class AuthController
                             setcookie('remember-me', '');
                         }
                         
-                        $_SESSION['id'] = $id;
+                        $_SESSION['id_u'] = $id;
                         $_SESSION['nom'] = $nom;
                         $_SESSION['prenom'] = $prenom;
                         $_SESSION['email'] = $email;
@@ -72,43 +75,22 @@ class AuthController
 
                         header("Location: /settings/account");
                     } else {
-                        echo "Email ou mot de passe invalide.";
+                        $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Adresse e-mail ou mot de passe invalide.</p>'], 'error');
+                        $this->show($flash);
                     }
                 }
             } else {
                 if (empty($loginEmail)) {
-                    echo "Email non fourni.";
+                    $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Adresse e-mail" est vide.</p>'], 'error');
+                    $this->show($flash);
                 }
 
                 if (empty($loginPassword)) {
-                    echo "Mot de passe non fourni.";
+                    $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Mot de passe" est vide.</p>'], 'error');
+                    $this->show($flash);
                 }
             }
         }
-    }
-
-    /**
-     * Méthode d'inscription
-     *
-     * @return void
-     */
-    public function register() {
-        // A faire
-
-        /**
-         * Si inscription générer une photo de profil:
-         * 
-         * $avatar = new LasseRafn\InitialAvatarGenerator\InitialAvatar();
-         * $image = $avatar->name(`{$nom} {$prenom}`)->generate();
-         * return $image->stream('png', 100); ( ->save(); )
-         * 
-         * $target = 'storage/uploads/'; |
-         * $link = 'uploads';            | A REFACTORISER
-         * symlink($target, $link);      |
-         * 
-         * $filename = md5($nom.$prenom).'png';
-         * $final_url = readlink($link).$filename;
-         */ 
     }
 
     /**

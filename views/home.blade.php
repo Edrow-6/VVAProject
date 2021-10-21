@@ -1,5 +1,5 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('layouts.app', ['page_type' => 'home', 'body_classes' => 'bg-gray-100'])
+@extends('layouts.app', ['title' => 'Accueil', 'page_type' => 'home', 'body_classes' => 'bg-gray-100'])
 
 @section('content')
 <div class="min-h-screen">

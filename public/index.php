@@ -14,7 +14,7 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/../');
 $dotenv->load();
 
 // Fichier de configurations avec les variables .env
-require __DIR__.'/../config/app.php';
+$config = require __DIR__.'/../config/app.php';
 
 // Afficher les erreurs php si non activé dans php.ini
 ini_set('display_errors', 'on');
@@ -32,11 +32,16 @@ $router->set404('ErrorController@show');
 
 $router->mount('/auth', function () use ($router) {
     $router->mount('/login', function () use ($router) {
-        $router->get('/', 'AuthController@show');
-        $router->post('/', 'AuthController@login');
+        $router->get('/', 'LoginController@show');
+        $router->post('/', 'LoginController@login');
     });
 
-    $router->get('/logout', 'AuthController@logout');
+    $router->mount('/register', function () use ($router) {
+        $router->get('/', 'RegisterController@show');
+        $router->post('/', 'RegisterController@register');
+    });
+
+    $router->get('/logout', 'LoginController@logout');
 });
 
 $router->get('/', 'HomeController@show');
@@ -44,13 +49,13 @@ $router->post('/', 'HomeController@pastebin');
 
 // Paramètres Utilisateur
 $router->before('GET|POST', '/settings/.*', function () {
-    if (!isset($_SESSION['id'])) {
+    if (!isAuth()) {
         header('location: /auth/login');
         exit();
     }
 });
 $router->before('GET|POST', '/auth/login', function () {
-    if (isset($_SESSION['id'])) {
+    if (isAuth()) {
         header('location: /');
         exit();
     }
@@ -69,7 +74,7 @@ $router->mount('/settings', function () use ($router) {
 
 // Panel Utilisateur
 $router->before('GET|POST', '/dash', function () {
-    if (!isset($_SESSION['id'])) {
+    if (isAuth()) {
         header('location: /auth/login');
         exit();
     }
@@ -81,8 +86,8 @@ $router->mount('/dash', function () use ($router) {
 
 // Panel Administration
 $router->before('GET|POST', '/dash/admin/.*', function () {
-    if (isset($_SESSION['type_compte']) == 'admin') {
-        // Code ici
+    if (isAuth('admin')) {
+        // A faire
     } else {
         header('location: /auth/login');
         exit();
