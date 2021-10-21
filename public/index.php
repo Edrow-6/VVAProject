@@ -2,6 +2,7 @@
 
 use Bramus\Router\Router;
 use Symfony\Component\ErrorHandler\Debug;
+use App\Utils\Functions;
 
 // Si l'id de session n'existe pas, alors démarrer la session.
 if (!session_id()) @session_start();
@@ -49,13 +50,15 @@ $router->post('/', 'HomeController@pastebin');
 
 // Paramètres Utilisateur
 $router->before('GET|POST', '/settings/.*', function () {
-    if (!isAuth()) {
+    $function = new Functions();
+    if (!$function->isAuth()) {
         header('location: /auth/login');
         exit();
     }
 });
 $router->before('GET|POST', '/auth/login', function () {
-    if (isAuth()) {
+    $function = new Functions();
+    if ($function->isAuth()) {
         header('location: /');
         exit();
     }
@@ -74,7 +77,8 @@ $router->mount('/settings', function () use ($router) {
 
 // Panel Utilisateur
 $router->before('GET|POST', '/dash', function () {
-    if (isAuth()) {
+    $function = new Functions();
+    if ($function->isAuth()) {
         header('location: /auth/login');
         exit();
     }
@@ -86,7 +90,8 @@ $router->mount('/dash', function () use ($router) {
 
 // Panel Administration
 $router->before('GET|POST', '/dash/admin/.*', function () {
-    if (isAuth('admin')) {
+    $function = new Functions();
+    if ($function->isAuth('admin')) {
         // A faire
     } else {
         header('location: /auth/login');

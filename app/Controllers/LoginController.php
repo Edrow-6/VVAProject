@@ -3,13 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Controllers\Controller;
+use App\Utils\Functions;
 use Exception;
 
 //use function App\Utils\render;
 require __DIR__ . '/../Utils/functions.php';
 
-class LoginController
+class LoginController extends Controller
 {
+
     /**
      * Méthode d'affichage de la page avec des variables
      *
@@ -17,7 +20,7 @@ class LoginController
      * @throws Exception
      */
     public function show($flash = '') {
-        render('auth.login', [
+        $function->render('auth.login', [
             'flash' => $flash
         ]);
     }
