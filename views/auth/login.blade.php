@@ -33,10 +33,10 @@
               <input :type="show ? 'password' : 'text'" name="password" id="password" autocomplete="current-password" required="" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="pwd#@$123">
               <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
                 <button type="button" @click="show = !show" :class="{ 'block': !show, 'hidden': show }" class="transform hover:scale-110 duration-150">
-                  <i class="fad fa-eye fa-lg text-gray-500"></i>
+                  <i class="fad fa-eye text-gray-500"></i>
                 </button>
                 <button type="button" @click="show = !show" :class="{ 'hidden': !show, 'block': show }" class="transform hover:scale-110 duration-150">
-                  <i class="fad fa-eye-slash fa-lg text-gray-500"></i>
+                  <i class="fad fa-eye-slash text-gray-500"></i>
                 </button>
               </div>
             </div>

@@ -5,21 +5,20 @@ namespace App\Controllers;
 //use function App\Utils\render;
 use Exception;
 
-require __DIR__.'/../Utils/functions.php';
-
-class HomeController
+class HomeController extends Controller
 {
     /**
      * @throws Exception
      */
-    public function show() {
+    public function show($flash = '') {
         if ($_SESSION) {
             $nom = $_SESSION['nom'] ?? '';
             $prenom = $_SESSION['prenom'] ?? '';
         }
 
-        render('home', [
-            'nom' => $nom = '', 
+        $this->render('home', [
+            'flash' => $flash,
+            'nom' => $nom = '',
             'prenom' => $prenom = ''
         ]);
     }

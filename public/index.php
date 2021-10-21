@@ -1,6 +1,8 @@
 <?php
 
+use App\Utils\Condition;
 use Bramus\Router\Router;
+use eftec\PdoOne;
 use Symfony\Component\ErrorHandler\Debug;
 
 // Si l'id de session n'existe pas, alors démarrer la session.
@@ -21,6 +23,27 @@ ini_set('display_errors', 'on');
 
 if ($config['app_debug']) {
     Debug::enable();
+}
+
+$pdo = null;
+/**
+ * Initialisation de la base de données avec PDO
+ * @return eftec\PdoOne
+ * @throws Exception
+ */
+function database(): eftec\PdoOne
+{
+    // Fichier de configurations avec les variables .env
+    $config = require __DIR__.'/../config/app.php';
+
+    global $pdo;
+    if ($pdo === null) {
+        $pdo = new PdoOne("mysql", $config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
+        $pdo->logLevel = 4; // Utile pour debug et permet de trouver les problèmes en rapport avec les requêtes MySQL. 1 = prod | 4 = dev
+        $pdo->open();
+    }
+
+    return $pdo;
 }
 
 // Création de l'instance du Router.
@@ -49,13 +72,13 @@ $router->post('/', 'HomeController@pastebin');
 
 // Paramètres Utilisateur
 $router->before('GET|POST', '/settings/.*', function () {
-    if (!isAuth()) {
+    if (!Condition::isAuth()) {
         header('location: /auth/login');
         exit();
     }
 });
 $router->before('GET|POST', '/auth/login', function () {
-    if (isAuth()) {
+    if (Condition::isAuth()) {
         header('location: /');
         exit();
     }
@@ -74,21 +97,19 @@ $router->mount('/settings', function () use ($router) {
 
 // Panel Utilisateur
 $router->before('GET|POST', '/dash', function () {
-    if (isAuth()) {
+    if (!Condition::isAuth()) {
         header('location: /auth/login');
         exit();
     }
 });
 
 $router->mount('/dash', function () use ($router) {
-    $router->get('/', 'DashController@index');
+    $router->get('/', 'DashController@show');
 });
 
 // Panel Administration
 $router->before('GET|POST', '/dash/admin/.*', function () {
-    if (isAuth('admin')) {
-        // A faire
-    } else {
+    if (!Condition::isAuth() || !Condition::asRole('admin')) {
         header('location: /auth/login');
         exit();
     }

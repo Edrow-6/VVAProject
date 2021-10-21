@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Utils\Notify;
 use Exception;
 
-//use function App\Utils\render;
-require __DIR__ . '/../Utils/functions.php';
-
-class SettingsController
+class SettingsController extends Controller
 {
     /**
      * @throws Exception
@@ -23,7 +21,7 @@ class SettingsController
             $numero_tel = $_SESSION['numero_tel'];
         }
 
-        render('settings.account', [
+        $this->render('settings.account', [
             'flash' => $flash,
             'nom' => $nom, 
             'prenom' => $prenom,
@@ -83,7 +81,7 @@ class SettingsController
             }*/
         }
 
-        $flash = notifySuccess()->message(['<p class="text-sm font-medium text-gray-900">Sauvegarde réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Vous informations de compte on été validées avec succès.</p>'], 'error');
+        $flash = Notify::success()->message(['<p class="text-sm font-medium text-gray-900">Sauvegarde réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Vous informations de compte on été validées avec succès.</p>']);
         $this->account($flash);
     }
 
@@ -98,8 +96,8 @@ class SettingsController
             $email = $_SESSION['email'];
         }
         
-        render('settings.security', [
-            'nom' => $nom, 
+        $this->render('settings.security', [
+            'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
             'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'
@@ -136,8 +134,8 @@ class SettingsController
             $email = $_SESSION['email'];
         }
 
-        render('settings.billing', [
-            'nom' => $nom, 
+        $this->render('settings.billing', [
+            'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
             'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'

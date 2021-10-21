@@ -5,14 +5,12 @@ namespace App\Controllers;
 //use function App\Utils\render;
 use Exception;
 
-require __DIR__.'/../Utils/functions.php';
-
-class ErrorController
+class ErrorController extends Controller
 {
     /**
      * @throws Exception
      */
-    public function show() {
-        render('404');
+    public function show($flash = '') {
+        $this->render('404', ['flash' => $flash]);
     }
 }

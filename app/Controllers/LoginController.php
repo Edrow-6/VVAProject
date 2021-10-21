@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Utils\Notify;
 use Exception;
 
-//use function App\Utils\render;
-require __DIR__ . '/../Utils/functions.php';
-
-class LoginController
+class LoginController extends Controller
 {
     /**
      * Méthode d'affichage de la page avec des variables
@@ -17,7 +15,7 @@ class LoginController
      * @throws Exception
      */
     public function show($flash = '') {
-        render('auth.login', [
+        $this->render('auth.login', [
             'flash' => $flash
         ]);
     }
@@ -39,7 +37,7 @@ class LoginController
             if (!empty($loginEmail) && !empty($loginPassword)) {
                 // Si l'email entrée ne correspond à aucun email de la bdd.
                 if (isset($infoClient[0]) <= 0) {
-                    $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Cette adresse e-mail n\'est pas enregistrée.</p>'], 'error');
+                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Cette adresse e-mail n\'est pas enregistrée.</p>']);
                     $this->show($flash);
                 } else {
                     $id = $infoClient[0]['id'];
@@ -75,18 +73,18 @@ class LoginController
 
                         header("Location: /settings/account");
                     } else {
-                        $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Adresse e-mail ou mot de passe invalide.</p>'], 'error');
+                        $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Adresse e-mail ou mot de passe invalide.</p>']);
                         $this->show($flash);
                     }
                 }
             } else {
                 if (empty($loginEmail)) {
-                    $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Adresse e-mail" est vide.</p>'], 'error');
+                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Adresse e-mail" est vide.</p>']);
                     $this->show($flash);
                 }
 
                 if (empty($loginPassword)) {
-                    $flash = notifyError()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Mot de passe" est vide.</p>'], 'error');
+                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Mot de passe" est vide.</p>']);
                     $this->show($flash);
                 }
             }

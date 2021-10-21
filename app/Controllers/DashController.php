@@ -5,15 +5,12 @@ namespace App\Controllers;
 use App\Models\Lodging;
 use Exception;
 
-//use function App\Utils\render;
-require __DIR__ . '/../Utils/functions.php';
-
-class DashController
+class DashController extends Controller
 {
     /**
      * @throws Exception
      */
-    public function index() {
+    public function show($flash = '') {
         //debug('error', $_SESSION['type_compte']);
         $nom = $prenom = $email = $numero_tel = $test = '';
         if ($_SESSION) {
@@ -26,7 +23,6 @@ class DashController
         switch (isset($_SESSION['type_compte'])) {
             case 'admin': // Administrateur
                 $test = 'admin';
-                echo "test";
                 break;
             case 'gestion': // Gestionnaire
                 $test = 'gestion';
@@ -39,7 +35,8 @@ class DashController
         $hebergements = Lodging::select();
         $types_heb = Lodging::selectType();
 
-        render('dashboard.index', [
+        $this->render('dashboard.index', [
+            'flash' => $flash,
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,

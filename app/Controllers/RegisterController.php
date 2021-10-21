@@ -5,10 +5,7 @@ namespace App\Controllers;
 use App\Models\User;
 use Exception;
 
-//use function App\Utils\render;
-require __DIR__ . '/../Utils/functions.php';
-
-class RegisterController
+class RegisterController extends Controller
 {
     /**
      * Méthode d'affichage de la page avec des variables
@@ -17,7 +14,7 @@ class RegisterController
      * @throws Exception
      */
     public function show($flash = '') {
-        render('auth.login', [
+        $this->render('auth.login', [
             'flash' => $flash
         ]);
     }
