@@ -2,7 +2,7 @@
     "name": "edrow/myphp-framework",
     "description": "Framework personnel servant de base pour mes nouveaux projets",
     "type": "project",
-    "license": "GNU, v3.0",
+    "license": "GPL-3.0-only",
     "authors": [
         {
             "name": "Edrow",
@@ -27,6 +27,8 @@
         "lasserafn/php-initial-avatar-generator": "dev-master",
         "tamtamchik/simple-flash": "3.0.x-dev",
         "ext-curl": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "monolog/monolog": "2.x-dev",
+        "algolia/algoliasearch-client-php": "dev-master"
     }
 }

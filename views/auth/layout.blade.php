@@ -6,6 +6,7 @@
   <body @unless(empty($body_classes)) class="{{ $body_classes }}" @endunless>
     @yield('content')
 
+    @include('components.flash')
     @include('components.scripts')
   </body>
 </html>

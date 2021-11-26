@@ -3,12 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Utils\Logging;
+use App\Utils\Notify;
 use Exception;
 
-//use function App\Utils\render;
-require __DIR__ . '/../Utils/functions.php';
-
-class SettingsController
+class SettingsController extends Controller
 {
     /**
      * @throws Exception
@@ -23,14 +22,12 @@ class SettingsController
             $numero_tel = $_SESSION['numero_tel'];
         }
 
-        render('settings.account', [
+        $this->render('settings.account', [
             'flash' => $flash,
             'nom' => $nom, 
             'prenom' => $prenom,
             'email' => $email,
-            'numero_tel' => $numero_tel,
-            //'avatar' => "../assets/uploads/avatars/{$_SESSION['avatar']}"
-            'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'
+            'numero_tel' => $numero_tel
         ]);
     }
 
@@ -39,17 +36,20 @@ class SettingsController
      */
     public function saveAccount() {
         if (isset($_POST['save-account'])) {
-            User::update($_SESSION['id_u'], ['nom' => $_POST['last-name'], 'prenom' => $_POST['first-name'], 'email' => $_POST['email-address'], 'numero_tel' => $_POST['phone-number']]);
+            $nom = $this->validation()->def($_SESSION['nom'])->type('string')->ifFailThenDefault()->post('last-name');
+            $prenom = $this->validation()->def($_SESSION['prenom'])->type('string')->ifFailThenDefault()->post('first-name');
+            $email = $this->validation()->def($_SESSION['email'])->type('string')->ifFailThenDefault()->post('email-address');
+            $num_tel = $this->validation()->def($_SESSION['numero_tel'])->type('string')->ifFailThenDefault()->post('phone-number');
 
-            $_SESSION['nom'] = $_POST['last-name'];
-            $_SESSION['prenom'] = $_POST['first-name'];
-            $_SESSION['email'] = $_POST['email-address'];
-            $_SESSION['numero_tel'] = $_POST['phone-number'];
+            User::update($_SESSION['id_u'], ['nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'numero_tel' => $num_tel]);
 
-            $target = __DIR__.'/../../storage/uploads/avatars/';
-            //symlink($target, __DIR__.'/../../public/assets/uploads/avatars/link');
+            $_SESSION['nom'] = $nom;
+            $_SESSION['prenom'] = $prenom;
+            $_SESSION['email'] = $email;
+            $_SESSION['numero_tel'] = $num_tel;
 
-            $filename = md5($_SESSION['prenom'].$_SESSION['nom']);
+            $target = __DIR__.'/../../public/assets/images/uploads/avatars/';
+            $filename = md5($prenom.$nom);
             //$filename = basename($_FILES["user-photo"]["name"]);
             $filetype = pathinfo(basename($_FILES["user-photo"]["name"]), PATHINFO_EXTENSION);
             $final_filename = "$filename.$filetype";
@@ -60,30 +60,21 @@ class SettingsController
                 if (!file_exists($final_url)) {
                     if (in_array($filetype, $allowTypes)) {
                         if (move_uploaded_file($_FILES['user-photo']['tmp_name'], $final_url)) {
-                            User::update($_SESSION['id'], ['photo' => $final_filename]);
-                            $this->account();
+                            User::update($_SESSION['id_u'], ['avatar' => $_ENV['APP_URL'].'/assets/images/uploads/avatars/'.$final_filename]);
+                            Logging::log()->info('Définition de l\'avatar: '.$_ENV['APP_URL'].'/assets/images/uploads/avatars/'.$final_filename);
                         } else {
-                            echo 'Veuillez choisir un fichier a upload';
+                            $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur</p>', '<p class="mt-1 text-sm text-gray-600">Veuillez choisir un fichier à envoyer.</p>']);
                         }
                     } else {
-                        echo 'Erreur type';
+                        $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur</p>', '<p class="mt-1 text-sm text-gray-600">Le format de fichier est incorrect.</p>']);
                     }
                 } else {
-                    echo 'Le fichier existe deja';
+                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur</p>', '<p class="mt-1 text-sm text-gray-600">Cette avatar existe déjà.</p>']);
                 }
             }
-
-            /*if (!empty($_FILES['user-photo']['name'])) {
-                $filename = md5($_SESSION['nom'].$_SESSION['prenom']);
-                if (move_uploaded_file($_FILES['user-photo']['tmp_name'], `storage/uploads/{$filename}`)) {
-                    echo 'Upload réussi !';
-                }
-            } else {
-                echo 'NOPE';
-            }*/
         }
 
-        $flash = notifySuccess()->message(['<p class="text-sm font-medium text-gray-900">Sauvegarde réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Vous informations de compte on été validées avec succès.</p>'], 'error');
+        $flash = Notify::success()->message(['<p class="text-sm font-medium text-gray-900">Sauvegarde réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Vous informations de compte on été validées avec succès.</p>']);
         $this->account($flash);
     }
 
@@ -98,8 +89,8 @@ class SettingsController
             $email = $_SESSION['email'];
         }
         
-        render('settings.security', [
-            'nom' => $nom, 
+        $this->render('settings.security', [
+            'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
             'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'
@@ -136,8 +127,8 @@ class SettingsController
             $email = $_SESSION['email'];
         }
 
-        render('settings.billing', [
-            'nom' => $nom, 
+        $this->render('settings.billing', [
+            'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
             'avatar' => 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png'

@@ -4,10 +4,11 @@
     "version": "2.0.0",
     "main": "none",
     "scripts": {
-        "build": "postcss public/assets/css/styles.css -o public/assets/css/compiled.min.css"
+        "build": "postcss public/assets/css/styles.css -o public/assets/css/compiled.min.css",
+        "watch": "postcss public/assets/css/styles.css -o public/assets/css/compiled.min.css --watch"
     },
     "author": "Edrow",
-    "license": "GNU, v3.0",
+    "license": "GPL-3.0-only",
     "devDependencies": {
         "@tailwindcss/forms": "^0.3.3",
         "@tailwindcss/line-clamp": "^0.2.2",
@@ -15,6 +16,7 @@
         "cssnano": "^5.0.8",
         "postcss": "^8.3.6",
         "postcss-cli": "^8.3.1",
-        "tailwindcss": "^2.2.15"
+        "tailwindcss": "^2.2.15",
+        "@tailwindcss/typography": "^0.4.1"
     }
 }

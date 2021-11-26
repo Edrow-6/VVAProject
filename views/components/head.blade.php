@@ -2,10 +2,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>{{ $title.' - '.$app }}</title>
+<title>{{ $title.' | '.$app }}</title>
 
 {{-- Favicon --}}
-<link href="../assets/images/cube.png" rel="icon">
+<link href="@asset('favicon')" rel="icon">
 
 {{-- Polices --}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
 
 {{-- TailwindCSS et Fontawesome --}}
 <link href="@asset('tailwindcss')" rel="stylesheet">
-<link href="@asset('fontawesomepro')" rel="stylesheet">
+<link href="@asset('styles')" rel="stylesheet">
 
 {{-- Bibliothèques --}}
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>

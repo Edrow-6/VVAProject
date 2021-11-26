@@ -2,80 +2,76 @@
 @extends('auth.layout', ['title' => 'Se connecter', 'page_type' => 'login', 'body_classes' => ''])
 
 @section('content')
-<div class="flex flex-col justify-center">
-  <div class="z-0 block">
-    <img class="absolute inset-0 object-cover w-full h-full" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" alt="" />
-  </div>
-  <div class="z-10 backdrop-filter backdrop-blur-2xl min-h-screen lg:pt-24 md:pt-16 pt-10 sm:px-6 lg:px-8">
+<div class="flex flex-col justify-center bg-svg-patterns">
+  <div class="z-10 min-h-screen lg:pt-24 md:pt-16 pt-10 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <a href="/">
-        <img class="mx-auto h-12 w-auto" src="@asset('logo_light')" alt="VVA">
+        <img class="mx-auto h-12 w-auto filter drop-shadow-md" src="@asset('logo_light')" alt="VVA">
       </a>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-100 filter drop-shadow-lg">
         Connectez-vous<br> à votre compte
       </h2>
     </div>
   
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div class="bg-white bg-opacity-75 backdrop-filter backdrop-blur-md py-8 px-4 shadow sm:rounded-2xl sm:px-10">
-        <a id="back" href="/" class="inline-flex items-center p-2 -mt-12 -ml-14 absolute border border-transparent rounded-full transition duration-150 shadow-md text-sky-400 hover:text-sky-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+      <div class="bg-white bg-opacity-25 backdrop-filter backdrop-blur-4xl py-4 px-4 shadow rounded-xl">
+        <a id="back" href="/" class="inline-flex items-center p-2 -mt-8 -ml-8 absolute border border-transparent rounded-full transition duration-150 shadow-md text-blue-400 hover:text-blue-600 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
           <i class="far fa-arrow-left w-5 h-5 text-center" style="line-height: 19px"></i>
         </a>
-        <form action="#" method="POST" class="space-y-6">
-          <div class="bg-white focus:shadow border border-transparent rounded-lg px-3 py-2 shadow-sm transition duration-150 focus-within:ring-1 focus-within:ring-sky-400 focus-within:border-sky-400 mt-1">
-            <label for="email" class="block text-xs font-medium text-gray-700">Adresse e-mail</label>
-            <input type="email" name="email" id="email" autocomplete="email" required="" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="exemple@gmail.com" value="@if(isset($_COOKIE['remember-me'])) {{ $_COOKIE["remember-me"] }} @endif">
+        <form action="/auth/login" method="POST" class="space-y-6 mt-2">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-100">Adresse e-mail</label>
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M14.243 5.757a6 6 0 10-.986 9.284 1 1 0 111.087 1.678A8 8 0 1118 10a3 3 0 01-4.8 2.401A4 4 0 1114 10a1 1 0 102 0c0-1.537-.586-3.07-1.757-4.243zM12 10a2 2 0 10-4 0 2 2 0 004 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <input type="email" name="email" id="email" class="focus:ring-blue-500 focus:border-blue-500 transition duration-150 block w-full rounded-md pl-10 sm:text-sm border-gray-400 border-opacity-75 text-white placeholder-gray-100 bg-white bg-opacity-30 shadow-sm" placeholder="vous@exemple.fr" value="@if(isset($_COOKIE['remember-me'])) {{ $_COOKIE["remember-me"] }} @endif" required>
+            </div>
           </div>
 
-          <div x-data="{ show: true }" class="bg-white focus:shadow border border-transparent rounded-lg px-3 py-2 shadow-sm transition duration-150 focus-within:ring-1 focus-within:ring-sky-400 focus-within:border-sky-400 mt-1">
-            <label for="password" class="block text-xs font-medium text-gray-700">Mot de passe</label>
-            <div class="relative flex items-center">
-              <input :type="show ? 'password' : 'text'" name="password" id="password" autocomplete="current-password" required="" class="block w-full border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm" placeholder="pwd#@$123">
-              <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                <button type="button" @click="show = !show" :class="{ 'block': !show, 'hidden': show }" class="transform hover:scale-110 duration-150">
-                  <i class="fad fa-eye fa-lg text-gray-500"></i>
-                </button>
-                <button type="button" @click="show = !show" :class="{ 'hidden': !show, 'block': show }" class="transform hover:scale-110 duration-150">
-                  <i class="fad fa-eye-slash fa-lg text-gray-500"></i>
-                </button>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-100">Mot de passe</label>
+            <div x-data="{ show: true }" class="mt-1 flex rounded-md shadow-sm">
+              <div class="relative flex items-stretch flex-grow focus-within:z-10">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <input :type="show ? 'password' : 'text'"  name="password" id="password" class="focus:ring-blue-500 focus:border-blue-500 transition duration-150 block w-full rounded-none rounded-l-md pl-10 border-gray-400 border-opacity-75 sm:text-sm text-white placeholder-gray-100 bg-white bg-opacity-30 shadow-sm" placeholder="pwd#@$123" required>
               </div>
+              <button type="button" @click="show = !show" :class="{ 'block': show, 'hidden': !show }" class="-ml-px relative transition duration-150 inline-flex items-center px-4 py-2 text-sm font-medium rounded-r-md border-gray-400 border-opacity-75 text-gray-700 bg-white bg-opacity-50 hover:bg-opacity-75">
+                <i class="far fa-eye fa-lg text-white"></i>
+              </button>
+              <button type="button" @click="show = !show" :class="{ 'hidden': show, 'block': !show }"  class="-ml-px relative transition duration-150 inline-flex items-center px-4 py-2 text-sm font-medium rounded-r-md border-gray-400 border-opacity-75 text-gray-700 bg-white bg-opacity-50 hover:bg-opacity-75">
+                <i class="far fa-eye-slash fa-lg text-white"></i>
+              </button>
             </div>
           </div>
 
           <div class="flex items-center justify-between">
             <div class="flex items-center">
-              <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 cursor-pointer shadow-sm text-blue-500 transition duration-150 border-transparent rounded focus:ring-blue-400" @if(isset($_COOKIE['remember-me'])) checked @endif/>
-              <label for="remember-me" class="block ml-2 cursor-pointer select-none text-sm text-gray-900">
+              <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 cursor-pointer bg-white bg-opacity-50 shadow-sm text-blue-500 transition duration-150 border-transparent rounded focus:ring-blue-400" @if(isset($_COOKIE['remember-me'])) checked @endif/>
+              <label for="remember-me" class="block ml-2 cursor-pointer select-none text-sm text-white">
                 Se souvenir de moi
               </label>
             </div>
 
             <div class="text-sm">
-              <a href="/login/mdp-oublie" class="font-medium duration-150 border-b-2 border-gray-200 hover:border-blue-300 text-blue-600 hover:text-blue-500">
+              <a href="/login/mdp-oublie" class="font-medium duration-150 border-b-2 border-gray-200 hover:border-blue-300 text-blue-200 hover:text-blue-300">
                 Mot de passe oublié ?
               </a>
             </div>
           </div>
 
-          <div class="relative group transform hover:scale-105 hover:shadow duration-150 rounded-lg">
-            <div class="absolute -inset-0 bg-gradient-to-r from-sky-400 to-sky-500 hover:from-sky-500 hover:to-sky-600 rounded-lg filter blur opacity-50 group-hover:opacity-75 transition duration-150 group-hover:duration-150"></div>
-            <button
-              type="submit"
-              name="login"
-              class="relative flex justify-center w-full px-2 py-2 text-sm font-medium text-white bg-gradient-to-br from-sky-400 to-sky-500 rounded-lg shadow-sm hover:from-sky-500 hover:to-sky-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500"
-            >
-              Se connecter
-            </button>
-          </div>
+          <button type="submit" name="login" class="button-blue w-full px-2 py-2">
+            <span class="filter drop-shadow">Se connecter</span>
+          </button>
         </form>
       </div>
     </div>
-  </div>
-</div>
-
-<div aria-live="assertive" class="fixed z-50 inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
-  <div class="w-full flex flex-col items-center space-y-4 sm:items-end">
-    @if(isset($flash)) {!! $flash !!} @endif
   </div>
 </div>
 @endsection
