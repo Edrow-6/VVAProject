@@ -74,7 +74,7 @@ class SettingsController extends Controller
             }
         }
 
-        $flash = Notify::success()->message(['<p class="text-sm font-medium text-gray-900">Sauvegarde réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Vous informations de compte on été validées avec succès.</p>']);
+        $flash = Notify::success()->message(['<p class="text-sm font-medium text-gray-900">Sauvegarde réussie !</p>', '<p class="mt-1 text-sm text-gray-600">Vous informations de compte on été validées avec succès.</p>']);
         $this->account($flash);
     }
 

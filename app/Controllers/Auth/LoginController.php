@@ -15,10 +15,8 @@ class LoginController extends Controller
      * @return void
      * @throws Exception
      */
-    public function show($flash = '') {
-        $this->render('auth.login', [
-            'flash' => $flash
-        ]);
+    public function show() {
+        $this->render('auth.login');
     }
 
     /**
@@ -32,25 +30,25 @@ class LoginController extends Controller
             $loginEmail = $_POST['email'];
             $loginPassword = $_POST['password'];
 
-            $user = User::select(['email' => $loginEmail])[0];
+            $user = User::select(['email' => $loginEmail]);
             
             // Si l'email et le mdp ne sont pas vide.
             if (!empty($loginEmail) && !empty($loginPassword)) {
                 // Si l'email entrée ne correspond à aucun email de la bdd.
-                if (isset($user) <= 0) {
-                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Cette adresse e-mail n\'est pas enregistrée.</p>']);
-                    $this->show($flash);
+                if (isset($user[0]) <= 0) {
+                    Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Cette adresse e-mail n\'est pas enregistrée.</p>']);
+                    $this->redirectTo('/settings/account');
                 } else {
-                    $id = $user['id'];
-                    $nom = $user['nom'];
-                    $prenom = $user['prenom'];
-                    $email = $user['email'];
-                    $avatar = $user['avatar'];
-                    $mot_de_passe = $user['mot_de_passe'];
-                    $numero_tel = $user['numero_tel'];
-                    $type_compte = $user['type_compte'];
-                    $cree_le = $user['cree_le'];
-                    $modifie_le = $user['modifie_le'];
+                    $id = $user[0]['id'];
+                    $nom = $user[0]['nom'];
+                    $prenom = $user[0]['prenom'];
+                    $email = $user[0]['email'];
+                    $avatar = $user[0]['avatar'];
+                    $mot_de_passe = $user[0]['mot_de_passe'];
+                    $numero_tel = $user[0]['numero_tel'];
+                    $type_compte = $user[0]['type_compte'];
+                    $cree_le = $user[0]['cree_le'];
+                    $modifie_le = $user[0]['modifie_le'];
 
                     $password = password_verify($loginPassword, $mot_de_passe);
 
@@ -72,22 +70,22 @@ class LoginController extends Controller
                         $_SESSION['cree_le'] = $cree_le;
                         $_SESSION['modifie_le'] = $modifie_le;
 
-                        $flash = Notify::success()->message(['<p class="text-sm font-medium text-gray-900">Connexion réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Bienvenue sur votre compte '.$_SESSION['prenom'].'.</p>']);
-                        $this->redirectTo('/settings/account', $flash);
+                        Notify::message('success', ['<p class="text-sm font-medium text-gray-900">Connexion réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Bienvenue sur votre compte '.$_SESSION['prenom'].'.</p>']);
+                        $this->redirectTo('/settings/account');
                     } else {
-                        $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Adresse e-mail ou mot de passe invalide.</p>']);
-                        $this->show($flash);
+                        Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Adresse e-mail ou mot de passe invalide.</p>']);
+                        $this->redirectTo('/settings/account');
                     }
                 }
             } else {
                 if (empty($loginEmail)) {
-                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Adresse e-mail" est vide.</p>']);
-                    $this->show($flash);
+                    Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Adresse e-mail" est vide.</p>']);
+                    $this->redirectTo('/settings/account');
                 }
 
                 if (empty($loginPassword)) {
-                    $flash = Notify::error()->message(['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Mot de passe" est vide.</p>']);
-                    $this->show($flash);
+                    Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Mot de passe" est vide.</p>']);
+                    $this->redirectTo('/settings/account');
                 }
             }
         }
@@ -102,6 +100,6 @@ class LoginController extends Controller
         session_destroy();
         //setcookie('remember-me', '');
 
-        header('Location: /');
+        $this->redirectTo('/');
     }
 }

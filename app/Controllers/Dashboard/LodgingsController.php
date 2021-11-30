@@ -6,6 +6,7 @@ use App\Controllers\Controller;
 use App\Models\Lodging;
 use App\Models\User;
 use App\Utils\Condition;
+use App\Utils\Notify;
 use Exception;
 
 class LodgingsController extends Controller
@@ -13,7 +14,7 @@ class LodgingsController extends Controller
     /**
      * @throws Exception
      */
-    public function show($flash = '') {
+    public function show() {
         if ($_SESSION) {
             $nom = $_SESSION['nom'];
             $prenom = $_SESSION['prenom'];
@@ -34,7 +35,6 @@ class LodgingsController extends Controller
         }
 
         $this->render('dashboard.lodgings', [
-            'flash' => $flash,
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,
@@ -44,5 +44,24 @@ class LodgingsController extends Controller
             'hebergements' => $hebergements,
             'types_heb' => $types_heb
         ]);
+    }
+
+    /**
+     * @return void
+     * @throws Exception
+     */
+    public function delete()
+    {
+        if (isset($_POST['delete'])) {
+            Lodging::delete($_POST['delete']);
+
+            Notify::message('success', ['<p class="text-sm font-medium text-gray-900">Suppression réussie !</p>', '<p class="mt-1 text-sm text-gray-600">Vous avez supprimé un hébergement avec succès.</p>']);
+            $this->redirectTo('/dashboard/lodgings');
+        }
+        if (isset($_POST['archive'])) {
+            // TODO: Backend archive ici et finition notifs
+            Notify::message('success', 'Test nouvelles notifs');
+            $this->redirectTo('/dashboard/lodgings');
+        }
     }
 }

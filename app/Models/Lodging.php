@@ -10,7 +10,7 @@ use PDOStatement;
 class Lodging
 {
     const TABLE = 'hebergements';
-    const PK = 'numero';
+    const PK = 'id';
 
     public static mixed $pdo = null;
 

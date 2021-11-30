@@ -7,6 +7,7 @@ use App\Utils\Condition;
 use eftec\bladeone\BladeOne;
 use eftec\ValidationOne;
 use Exception;
+use Tamtamchik\SimpleFlash\Flash;
 
 class Controller
 {
@@ -75,13 +76,11 @@ class Controller
     }
 
     /**
-     * @param $route - url cible de redirection
-     * @param $flash - message flash (notification)
+     * @param $route - url de redirection
      * @return void
      */
-    public function redirectTo($route, $flash): void
+    public function redirectTo($route): void
     {
-        // TODO: Faire la redirection d'une page via header avec implémentation $flash !
         header('Location:'.$route);
     }
 }

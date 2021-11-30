@@ -17,6 +17,7 @@
     </div>
   </div>
 
+  @include('components.flash')
   @include('components.scripts')
 
   <script>

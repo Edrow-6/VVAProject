@@ -34,7 +34,9 @@
         <label for="search" class="sr-only">Rechercher</label>
         <input id="search" type="search" placeholder="Rechercher ({{ $type_compte }})" class="transition duration-75 block w-full border-transparent pl-12 placeholder-white bg-sky-900 focus:border-transparent sm:text-sm focus:ring-0">
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
-          <i class="fal fa-search"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
         </div>
       </div>
     </div>
@@ -72,9 +74,8 @@
             >
               <!-- Active: "bg-gray-100", Not Active: "" -->
               <a href="/" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Retourner à l'accueil</a>
-
+              <a href="/my-bookings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Mes réservations</a>
               <a href="/settings/account" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Paramètres</a>
-
               <a href="/auth/logout" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Déconnexion</a>
             </div>
           @endauth

@@ -9,6 +9,7 @@ module.exports = {
       transitionProperty: {
         'height': 'height',
         'spacing': 'margin, padding',
+        'visibility': 'visibility'
       },
       backdropBlur: {
         '4xl': '80px',

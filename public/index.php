@@ -117,6 +117,7 @@ $router->before('GET|POST', '/dashboard/*', function () {
 $router->mount('/dashboard', function () use ($router) {
     $router->get('/', 'Dashboard\StatsController@show');
     $router->get('/lodgings', 'Dashboard\LodgingsController@show');
+    $router->post('/lodgings', 'Dashboard\LodgingsController@delete');
     $router->get('/bookings', 'Dashboard\BookingsController@show');
     $router->get('/users', 'Dashboard\UsersController@show');
 });

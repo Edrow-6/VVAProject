@@ -13,7 +13,7 @@ class UsersController extends Controller
     /**
      * @throws Exception
      */
-    public function show($flash = '') {
+    public function show() {
         if ($_SESSION) {
             $nom = $_SESSION['nom'];
             $prenom = $_SESSION['prenom'];
@@ -34,7 +34,6 @@ class UsersController extends Controller
         }
 
         $this->render('dashboard.users', [
-            'flash' => $flash,
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,

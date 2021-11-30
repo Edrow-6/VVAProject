@@ -13,7 +13,7 @@ class BookingsController extends Controller
     /**
      * @throws Exception
      */
-    public function show($flash = '') {
+    public function show() {
         if ($_SESSION) {
             $nom = $_SESSION['nom'];
             $prenom = $_SESSION['prenom'];
@@ -34,7 +34,6 @@ class BookingsController extends Controller
         }
 
         $this->render('dashboard.bookings', [
-            'flash' => $flash,
             'nom' => $nom,
             'prenom' => $prenom,
             'email' => $email,

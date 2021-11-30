@@ -9,19 +9,21 @@
         </div>
         <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
           <!-- Current: "border-teal-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-          <a href="/" class="@if($page_type == 'home') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-            <i class="fad fa-home fa-lg"></i>
+          <a href="/" class="@if($page_type == 'home') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
           </a>
-          <a href="/blog" class="@if($page_type == 'blog') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+          <a href="/blog" class="@if($page_type == 'blog') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
             Blog
           </a>
-          <a href="/lodging" class="@if($page_type == 'lodging') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+          <a href="/lodging" class="@if($page_type == 'lodging') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
             Hébergements
           </a>
-          <a href="/about" class="@if($page_type == 'about') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+          <a href="/about" class="@if($page_type == 'about') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
             A propos
           </a>
-          <a href="/faq" class="@if($page_type == 'faq') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+          <a href="/faq" class="@if($page_type == 'faq') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
             FAQ
           </a>
         </div>
@@ -31,7 +33,9 @@
           <label for="search" class="sr-only">Rechercher</label>
           <div class="relative">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <i class="fal fa-search text-gray-400"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
             </div>
             <input id="search" name="search" class="transition duration-75 block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="Rechercher" type="search">
           </div>
@@ -78,7 +82,9 @@
               <button type="button" @click="userMenu = !userMenu" class="transition duration-75 bg-transparent rounded-md flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 <span class="sr-only">Ouvrir le menu utilisateur</span>
                 <img class="h-8 w-8 rounded-full" src="@asset('avatar')" alt="">
-                <i :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="fal fa-angle-down fa-lg text-gray-400 mx-2 transform transition-transform duration-200 group-hover:text-gray-500"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="h-5 w-5 text-gray-400 mx-2 transform transition-transform duration-200 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
               </button>
             </div>
 
@@ -98,7 +104,12 @@
                  x-cloak
             >
               <!-- Active: "bg-gray-100", Not Active: "" -->
-              <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>
+              @auth('admin')
+                <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>
+              @elseauth('gestion')
+                <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>
+              @endauth
+              <a href="/my-bookings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Mes réservations</a>
               <a href="/settings/account" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Paramètres</a>
               <a href="/auth/logout" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Déconnexion</a>
             </div>

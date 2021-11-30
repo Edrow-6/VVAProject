@@ -2,30 +2,36 @@
 
 namespace App\Utils;
 
+use App\Utils\Templates\ErrorTemplate;
+use App\Utils\Templates\SuccessTemplate;
+use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 use Tamtamchik\SimpleFlash\Flash;
 
 class Notify
 {
     /**
      * Initialisation du moteur de notification flash (via session)
-     * @return object
+     * @param $type - error, warning, info, success
+     * @param $content - array [] ou string ""
+     * @throws FlashTemplateNotFoundException
      */
-    public static function error(): object
+    public static function message($type, $content): object
     {
-        $flash = new Flash();
-        $flash->setTemplate(new ErrorTemplate());
+        switch ($type) {
+            case 'error':
+                flash()->error($content);
+                break;
+            case 'warning':
+                flash()->warning($content);
+                break;
+            case 'info':
+                flash()->info($content);
+                break;
+            case 'success':
+                flash()->success($content);
+                break;
+        }
 
-        return $flash;
-    }
-
-    /**
-     * @return object
-     */
-    public static function success(): object
-    {
-        $flash = new Flash();
-        $flash->setTemplate(new SuccessTemplate());
-
-        return $flash;
+        return flash();
     }
 }

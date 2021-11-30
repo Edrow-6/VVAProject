@@ -13,7 +13,7 @@ class StatsController extends Controller
     /**
      * @throws Exception
      */
-    public function show($flash = '') {
+    public function show() {
         if ($_SESSION) {
             $nom = $_SESSION['nom'];
             $prenom = $_SESSION['prenom'];
@@ -29,7 +29,6 @@ class StatsController extends Controller
                 $types_heb = Lodging::selectType();
 
                 $this->render('dashboard.stats', [
-                    'flash' => $flash,
                     'nom' => $nom,
                     'prenom' => $prenom,
                     'email' => $email,

@@ -139,12 +139,5 @@
 </form>
 @endsection
 
-@section('script')
-<script>
-  // Cache les notifications au bout de x seconde(s)
-  $("#alert").show().delay(2500).fadeOut();
-</script>
-@endsection
-
 
 

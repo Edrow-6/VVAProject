@@ -13,10 +13,8 @@ class RegisterController extends Controller
      * @return void
      * @throws Exception
      */
-    public function show($flash = '') {
-        $this->render('auth.login', [
-            'flash' => $flash
-        ]);
+    public function show() {
+        $this->render('auth.login');
     }
 
     /**
