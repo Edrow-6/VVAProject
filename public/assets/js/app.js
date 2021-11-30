@@ -1,5 +1,5 @@
-// Gestion affichage alert/flash (masquer)
 
+// TODO: Javascript animation notify
 
 // Gestion affichage modal/popup (afficher)
 let modals = document.querySelectorAll('[data-modal]');

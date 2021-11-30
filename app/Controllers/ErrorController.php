@@ -10,7 +10,7 @@ class ErrorController extends Controller
     /**
      * @throws Exception
      */
-    public function show($flash = '') {
-        $this->render('errors.404', ['flash' => $flash]);
+    public function show() {
+        $this->render('errors.404');
     }
 }

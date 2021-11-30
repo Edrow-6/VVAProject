@@ -11,7 +11,7 @@ class LodgingListController extends Controller
     /**
      * @throws Exception
      */
-    public function show($flash = '') {
+    public function show() {
         if ($_SESSION) {
             $nom = $_SESSION['nom'] ?? '';
             $prenom = $_SESSION['prenom'] ?? '';
@@ -21,7 +21,6 @@ class LodgingListController extends Controller
         $types_heb = Lodging::selectType();
 
         $this->render('home.lodginglist', [
-            'flash' => $flash,
             'nom' => $nom = '',
             'prenom' => $prenom = '',
             'hebergements' => $hebergements,

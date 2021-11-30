@@ -36,7 +36,7 @@ class LoginController extends Controller
             if (!empty($loginEmail) && !empty($loginPassword)) {
                 // Si l'email entrée ne correspond à aucun email de la bdd.
                 if (isset($user[0]) <= 0) {
-                    Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Cette adresse e-mail n\'est pas enregistrée.</p>']);
+                    Notify::message('error', 'Adresse e-mail erronée !');
                     $this->redirectTo('/settings/account');
                 } else {
                     $id = $user[0]['id'];
@@ -70,21 +70,21 @@ class LoginController extends Controller
                         $_SESSION['cree_le'] = $cree_le;
                         $_SESSION['modifie_le'] = $modifie_le;
 
-                        Notify::message('success', ['<p class="text-sm font-medium text-gray-900">Connexion réussi !</p>', '<p class="mt-1 text-sm text-gray-600">Bienvenue sur votre compte '.$_SESSION['prenom'].'.</p>']);
+                        Notify::message('info', 'Bien le bonjour '.$_SESSION['prenom'].' !');
                         $this->redirectTo('/settings/account');
                     } else {
-                        Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de connexion !</p>', '<p class="mt-1 text-sm text-gray-600">Adresse e-mail ou mot de passe invalide.</p>']);
+                        Notify::message('error', 'Informations erronées !</p>');
                         $this->redirectTo('/settings/account');
                     }
                 }
             } else {
                 if (empty($loginEmail)) {
-                    Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Adresse e-mail" est vide.</p>']);
+                    Notify::message('error', 'Champs de saisie vide !');
                     $this->redirectTo('/settings/account');
                 }
 
                 if (empty($loginPassword)) {
-                    Notify::message('error', ['<p class="text-sm font-medium text-gray-900">Erreur de saisie !</p>', '<p class="mt-1 text-sm text-gray-600">Le champs "Mot de passe" est vide.</p>']);
+                    Notify::message('error', 'Champs de saisie vide !');
                     $this->redirectTo('/settings/account');
                 }
             }

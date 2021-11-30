@@ -55,12 +55,12 @@ class LodgingsController extends Controller
         if (isset($_POST['delete'])) {
             Lodging::delete($_POST['delete']);
 
-            Notify::message('success', ['<p class="text-sm font-medium text-gray-900">Suppression réussie !</p>', '<p class="mt-1 text-sm text-gray-600">Vous avez supprimé un hébergement avec succès.</p>']);
+            Notify::message('success', 'Hébergement supprimé !');
             $this->redirectTo('/dashboard/lodgings');
         }
         if (isset($_POST['archive'])) {
-            // TODO: Backend archive ici et finition notifs
-            Notify::message('success', 'Test nouvelles notifs');
+            // TODO: Backend archive ici
+            Notify::message('success', 'Archivé avec succès !');
             $this->redirectTo('/dashboard/lodgings');
         }
     }
