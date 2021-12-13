@@ -1,8 +1,8 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('settings.layout', ['title' => 'Paramètres Compte', 'page_type' => 'account', 'body_classes' => 'bg-gray-200'])
+@extends('account.layout', ['title' => 'Paramètres | Compte', 'page_type' => 'settings', 'body_classes' => 'bg-gray-200'])
 
 @section('content')
-<form class="lg:col-span-9" action="/settings/account" method="post" enctype="multipart/form-data">
+<form class="lg:col-span-9" action="/account/settings" method="post" enctype="multipart/form-data">
   <!-- Section compte -->
   <div class="py-6 px-4 sm:p-6 lg:pb-8 filter">
     <div>
@@ -17,18 +17,6 @@
         
         <div class="grid grid-cols-6 gap-6">
           <div class="col-span-6 sm:col-span-3">
-            <label for="first-name" class="text-sm font-medium text-gray-100">Prénom</label>
-            <div class="mt-1 relative rounded-md shadow-sm">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="focus:ring-blue-500 focus:border-blue-500 transition duration-150 block w-full rounded-md pl-10 sm:text-sm border-gray-400 border-opacity-75 text-white placeholder-gray-100 bg-white bg-opacity-30 shadow-sm" value="{{ $prenom }}" required>
-            </div>
-          </div>
-
-          <div class="col-span-6 sm:col-span-3">
             <label for="last-name" class="text-sm font-medium text-gray-100">Nom de famille</label>
             <div class="mt-1 relative rounded-md shadow-sm">
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -37,6 +25,18 @@
                 </svg>
               </div>
               <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="focus:ring-blue-500 focus:border-blue-500 transition duration-150 block w-full rounded-md pl-10 sm:text-sm border-gray-400 border-opacity-75 text-white placeholder-gray-100 bg-white bg-opacity-30 shadow-sm" value="{{ $nom }}" required>
+            </div>
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <label for="first-name" class="text-sm font-medium text-gray-100">Prénom</label>
+            <div class="mt-1 relative rounded-md shadow-sm">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="focus:ring-blue-500 focus:border-blue-500 transition duration-150 block w-full rounded-md pl-10 sm:text-sm border-gray-400 border-opacity-75 text-white placeholder-gray-100 bg-white bg-opacity-30 shadow-sm" value="{{ $prenom }}" required>
             </div>
           </div>
 
@@ -74,7 +74,7 @@
         <div class="mt-1 lg:hidden">
           <div class="flex items-center">
             <div class="flex-shrink-0 inline-block rounded-full overflow-hidden h-12 w-12" aria-hidden="true">
-              <img class="rounded-full h-full w-full" src="@asset('avatar')" alt="">
+              <img class="rounded-full h-full w-full" src="{{ $avatar }}" alt="">
             </div>
             <div class="ml-5 rounded-md shadow-sm">
               <div class="group relative border border-gray-300 rounded-md py-2 px-3 flex items-center justify-center hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-sky-500">
@@ -89,11 +89,11 @@
         </div>
 
         <div class="hidden relative rounded-full overflow-hidden lg:block">
-          <img class="relative rounded-full w-32 h-32" src="@asset('avatar')" alt="">
+          <img class="relative rounded-full w-32 h-32" src="{{ $avatar }}" alt="">
           <label for="user-photo" class="absolute inset-0 w-full h-full bg-black bg-opacity-50 transition duration-150 flex items-center justify-center text-sm font-medium text-white opacity-0 hover:opacity-100 backdrop-filter backdrop-blur-sm focus-within:opacity-100">
             <span class="font-semibold">Changer</span>
             <span class="sr-only"> photo d'utilisateur</span>
-            <input type="file" id="user-photo" name="user-photo" accept="image/png, image/jpeg, image/gif" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
+            <input type="file" id="user-photo" name="user-photo" accept="image/png, image/jpeg, image/jpg, image/gif" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md">
           </label>
         </div>
       </div>
@@ -131,7 +131,7 @@
       <button type="button" class="button-white py-2 px-4">
         Annuler
       </button>
-      <button type="submit" name="save-account" class="button-blue ml-5 px-4 py-2">
+      <button type="submit" name="save-settings" class="button-blue ml-5 px-4 py-2">
         Sauvegarder
       </button>
     </div>

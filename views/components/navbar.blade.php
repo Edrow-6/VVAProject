@@ -1,8 +1,8 @@
-<nav x-data="{ stick: false }" :class="{ 'shadow transition duration-200 bg-white' : stick, 'bg-gray-100 py-2' : !stick }" @scroll.window="stick = (window.pageYOffset > 20) ? true : false" class="sticky top-0 z-10 transition-spacing duration-200">
+<nav id="main-navbar" class="sticky py-2 top-0 z-10 transition-spacing duration-200">
   <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex px-2 lg:px-0">
-        <div class="flex-shrink-0 flex items-center">
+        <div class="shrink-0 flex items-center">
           <a href="/">
             <img class="h-8 w-auto" src="@asset('logo_teal_dark')" alt="VVA">
           </a>
@@ -44,7 +44,7 @@
       <div class="flex items-center lg:hidden">
         <!-- Mobile menu button -->
         <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
+          <span class="sr-only">Ouvrir le menu principal</span>
           <!--
             Icon when menu is closed.
 
@@ -68,7 +68,7 @@
         </button>
       </div>
       <div class="hidden lg:ml-4 lg:flex lg:items-center">
-        <button class="flex-shrink-0 bg-transparent p-1 text-gray-400 transition duration-75 rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+        <button class="shrink-0 bg-transparent p-1 text-gray-400 transition duration-75 rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
           <span class="sr-only">Voir les notifications</span>
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -77,12 +77,12 @@
 
         <!-- Menu déroulant du profil -->
         @auth
-        <div x-data="{ userMenu: false }" class="ml-4 relative flex-shrink-0">
+        <div class="ml-4 relative shrink-0">
           <div>
-            <button type="button" @click="userMenu = !userMenu" class="transition duration-75 bg-transparent rounded-md flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <button type="button" class="transition duration-75 bg-transparent rounded-md flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
               <span class="sr-only">Ouvrir le menu utilisateur</span>
-              <img class="h-8 w-8 rounded-full" src="@asset('avatar')" alt="">
-              <svg xmlns="http://www.w3.org/2000/svg" :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="h-5 w-5 text-gray-400 mx-2 transform transition-transform duration-200 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+              <img class="h-8 w-8 rounded-full" src="{{ $avatar }}" alt="">
+              <svg xmlns="http://www.w3.org/2000/svg" :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="h-5 w-5 text-gray-400 mx-2 transition-transform duration-200 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </button>
@@ -91,11 +91,11 @@
           <div x-show="userMenu"
                @click.away="userMenu = false"
                x-transition:enter="transition ease-out duration-100"
-               x-transition:enter-start="transform opacity-0 scale-95"
-               x-transition:enter-end="transform opacity-100 scale-100"
+               x-transition:enter-start="opacity-0 scale-95"
+               x-transition:enter-end="opacity-100 scale-100"
                x-transition:leave="transition ease-in duration-75"
-               x-transition:leave-start="transform opacity-100 scale-100"
-               x-transition:leave-end="transform opacity-0 scale-95"
+               x-transition:leave-start="opacity-100 scale-100"
+               x-transition:leave-end="opacity-0 scale-95"
                class="z-20 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                role="menu"
                aria-orientation="vertical"
@@ -110,17 +110,17 @@
               <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>
             @endauth
             <a href="/my-bookings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Mes réservations</a>
-            <a href="/settings/account" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Paramètres</a>
-            <a href="/auth/logout" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Déconnexion</a>
+            <a href="/account/settings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Mon compte</a>
+            <a href="/auth/logout" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</a>
           </div>
         </div>
         @else
-          <div class="flex-shrink-0 md:ml-4">
+          <div class="shrink-0 md:ml-4">
             <a href="/auth/login" class="button-blue flex items-center px-4 py-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 -ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
               </svg>
-              <span class="filter drop-shadow">Se connecter</span>
+              <span class="drop-shadow">Se connecter</span>
             </a>
           </div>
         @endauth
@@ -132,21 +132,21 @@
   <div class="lg:hidden" id="mobile-menu">
     <div class="pt-2 pb-3 space-y-1">
       <!-- Current: "bg-teal-50 border-teal-500 text-teal-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" -->
-      <a href="#" class="bg-teal-50 border-teal-500 text-teal-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
-      <a href="#" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Team</a>
-      <a href="#" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
-      <a href="#" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Calendar</a>
+      <a href="/blog" class="bg-teal-50 border-teal-500 text-teal-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Blog</a>
+      <a href="/lodgings" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Hébergements</a>
+      <a href="/about" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">A propos</a>
+      <a href="/faq" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">FAQ</a>
     </div>
     <div class="pt-4 pb-3 border-t border-gray-200">
       <div class="flex items-center px-4">
-        <div class="flex-shrink-0">
-          <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        <div class="shrink-0">
+          <img class="h-10 w-10 rounded-full" src="{{ $avatar }}" alt="">
         </div>
         <div class="ml-3">
-          <div class="text-base font-medium text-gray-800">Clo Clo</div>
-          <div class="text-sm font-medium text-gray-500">email@gmail.com</div>
+          <div class="text-base font-medium text-gray-800">{{ $nom.' '.$prenom }}</div>
+          <div class="text-sm font-medium text-gray-500">{{ $email }}</div>
         </div>
-        <button class="ml-auto flex-shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+        <button class="ml-auto shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
           <span class="sr-only">Voir les notifications</span>
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -155,7 +155,7 @@
       </div>
       <div class="mt-3 space-y-1">
         <a href="/dashboard" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Tableau de bord</a>
-        <a href="/settings/account" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Paramètres</a>
+        <a href="/account/settings" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Mon compte</a>
         <a href="/auth/logout" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Se déconnecter</a>
       </div>
     </div>

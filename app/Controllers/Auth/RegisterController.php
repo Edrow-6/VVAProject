@@ -23,7 +23,7 @@ class RegisterController extends Controller
      * @return void
      */
     public function register() {
-        // A faire
+        // TODO: Inscription
 
         /**
          * Si inscription générer une photo de profil:

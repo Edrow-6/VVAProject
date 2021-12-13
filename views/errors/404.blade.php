@@ -7,7 +7,7 @@
     <h1 class="mt-2 text-4xl font-extrabold text-white tracking-tight sm:text-5xl">Oh non ! On dirait que vous êtes perdu.</h1>
     <p class="mt-2 text-lg font-medium text-gray-100 text-opacity-75">Il semble que la page que vous recherchez n'existe pas.</p>
     <div class="mt-6">
-      <a href="/" class="inline-flex transform hover:scale-105 hover:shadow duration-150 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-black text-opacity-75 bg-white bg-opacity-75 sm:bg-opacity-50 sm:hover:bg-opacity-75">
+      <a href="/" class="inline-flex hover:scale-105 hover:shadow duration-150 items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-black text-opacity-75 bg-white bg-opacity-75 sm:bg-opacity-50 sm:hover:bg-opacity-75">
         Retourner à l'accueil
       </a>
     </div>

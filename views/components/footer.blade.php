@@ -11,12 +11,12 @@
         </select>
       </form>
 
-      <a href="https://twitter.com/Edrow__" target="_blank" class="flex items-center text-twitter transform hover:scale-110 duration-150 hover:text-blue-600">
+      <a href="https://twitter.com/Edrow__" target="_blank" class="flex items-center text-twitter hover:scale-110 duration-150 hover:text-blue-600">
         <span class="sr-only">Twitter</span>
         <i class="fab fa-twitter fa-lg"></i>
       </a>
 
-      <a href="https://github.com/Edrow-6" target="_blank" class="flex items-center text-github transform hover:scale-110 duration-150 hover:text-gray-600">
+      <a href="https://github.com/Edrow-6" target="_blank" class="flex items-center text-github hover:scale-110 duration-150 hover:text-gray-600">
         <span class="sr-only">GitHub</span>
         <i class="fab fa-github fa-lg"></i>
       </a>
@@ -24,8 +24,8 @@
     <div class="flex space-x-4 mt-8 md:mt-0 md:order-1">
       <img class="w-10" src="@asset('logo_dark')">
       <p class="text-center text-base text-gray-500">
-        {{-- &copy; date('Y') Dawbee, Assoc. Tous droits réservés. --}}
-        <i class="fal fa-code text-gray-700"></i> en France avec <i class="fal fa-heart text-red-700"></i> par Edrow
+        {{-- &copy; date('Y') Dawbee, Sarl. Tous droits réservés. text-color-700 --}}
+        Codé en France avec "amour" par Edrow
       </p>
     </div>
   </div>

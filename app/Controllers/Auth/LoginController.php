@@ -6,6 +6,7 @@ use App\Controllers\Controller;
 use App\Models\User;
 use App\Utils\Notify;
 use Exception;
+use Tamtamchik\SimpleFlash\Exceptions\FlashTemplateNotFoundException;
 
 class LoginController extends Controller
 {
@@ -16,7 +17,7 @@ class LoginController extends Controller
      * @throws Exception
      */
     public function show() {
-        $this->render('auth.login');
+        $this->render('auth.pages.login');
     }
 
     /**
@@ -37,7 +38,7 @@ class LoginController extends Controller
                 // Si l'email entrée ne correspond à aucun email de la bdd.
                 if (isset($user[0]) <= 0) {
                     Notify::message('error', 'Adresse e-mail erronée !');
-                    $this->redirectTo('/settings/account');
+                    $this->redirectTo('/auth/login');
                 } else {
                     $id = $user[0]['id'];
                     $nom = $user[0]['nom'];
@@ -71,23 +72,27 @@ class LoginController extends Controller
                         $_SESSION['modifie_le'] = $modifie_le;
 
                         Notify::message('info', 'Bien le bonjour '.$_SESSION['prenom'].' !');
-                        $this->redirectTo('/settings/account');
+                        $this->redirectTo('/');
                     } else {
-                        Notify::message('error', 'Informations erronées !</p>');
-                        $this->redirectTo('/settings/account');
+                        Notify::message('error', 'Informations erronées !');
+                        $this->redirectTo('/auth/login');
                     }
                 }
             } else {
                 if (empty($loginEmail)) {
                     Notify::message('error', 'Champs de saisie vide !');
-                    $this->redirectTo('/settings/account');
+                    $this->redirectTo('/auth/login');
                 }
 
                 if (empty($loginPassword)) {
                     Notify::message('error', 'Champs de saisie vide !');
-                    $this->redirectTo('/settings/account');
+                    $this->redirectTo('/auth/login');
                 }
             }
+        }
+
+        if (isset($_POST['demo'])) {
+            // TODO: Demo user login
         }
     }
 
@@ -95,11 +100,13 @@ class LoginController extends Controller
      * Méthode de déconnexion
      *
      * @return void
+     * @throws FlashTemplateNotFoundException
      */
     public function logout() {
-        session_destroy();
-        //setcookie('remember-me', '');
+        @session_destroy();
+        @session_start();
 
+        Notify::message('info', 'Vous avez été déconnecté !');
         $this->redirectTo('/');
     }
 }

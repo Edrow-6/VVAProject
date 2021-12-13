@@ -13,12 +13,6 @@
             <div>
               <span class="relative z-0 inline-flex shadow-sm rounded-md sm:shadow-none sm:space-x-3">
                 <span class="inline-flex sm:shadow-sm">
-                  <button data-modal="createModal" type="button" class="relative inline-flex items-center px-4 py-2 mr-2 rounded-md border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2.5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-                    </svg>
-                    <span>Créer</span>
-                  </button>
                   <button type="button" id="edit-selected" class="hidden sm:inline-flex -ml-px relative items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-900 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
@@ -76,7 +70,7 @@
                       Nom
                     </th>
                     <th scope="col" class="px-0 py-3 text-center text-gray-500 uppercase tracking-wider">
-                      Nombre place
+                      Places
                     </th>
                     <th scope="col" class="px-3 py-3 text-center text-gray-500 uppercase tracking-wider">
                       Type
@@ -140,7 +134,7 @@
                              tabindex="-1"
                              x-cloak
                         >
-                          <button type="button" id="edit" onclick="editButton('span #editable-{{ $heb['id'] }}')" class="block py-2 px-1 text-gray-500 hover:text-gray-600 transition duration-100" role="menuitem" tabindex="-1">
+                          <button  data-modal="editModal-{{ $heb['id'] }}" type="button" id="edit" class="block py-2 px-1 text-gray-500 hover:text-gray-600 transition duration-100" role="menuitem" tabindex="-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                               <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
                               <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
@@ -246,10 +240,9 @@
       </div>
     </div>
 
+    @include('dashboard.components.edit-modal')
     @include('dashboard.components.archive-modal')
     @include('dashboard.components.delete-modal')
-    @include('dashboard.components.create-modal')
-
   </section>
 @endsection
 
@@ -285,24 +278,5 @@
     placement: "top",
     theme: "translucent",
   });
-  // Switch Span -> Input pour l'édition
-  function spanSwitch(e) { // e = document.getElementById("id-span") ou this
-    let txt = e.innerText;
-    let element = document.getElementById('editable');
-
-    element.innerHTML = `<input onblur="spanReset(this)" value="${txt}" autofocus>`;
-    document.getElementsByName('input')[0].focus();
-  }
-  // Switch Input -> Span lors de la fin de l'édition
-  function spanReset(e) {
-    let txt = e.value;
-    let element = document.getElementById('editable');
-
-    element.innerHTML = `<span onclick="spanSwitch(this)">${txt}</span>`;
-  }
-
-  function editButton(e) { // e = span #editable
-    // TODO: Convertir tout les span en input lors de l'appui du boutton "Modifier".
-  }
 </script>
 @endsection

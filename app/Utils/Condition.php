@@ -6,7 +6,6 @@ class Condition
 {
     /**
      * Si l'utilisateur est connecté
-     * @param string $role (optionnel)
      * @return bool
      */
     static function isAuth(): bool

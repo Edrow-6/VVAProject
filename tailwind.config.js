@@ -2,8 +2,12 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: [],
-  darkMode: 'class', // or 'media' or 'class'
+  content: [
+      './views/**/**/*.php',
+      './public/assets/js/*.js',
+      './app/Utils/Templates/*.php'
+  ],
+  darkMode: 'class', // 'class' or remove if 'media/false'
   theme: {
     extend: {
       transitionProperty: {
@@ -18,7 +22,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      gray: colors.coolGray,
+      gray: colors.gray,
       red: colors.red,
       orange: colors.orange,
       amber: colors.amber,
@@ -43,11 +47,6 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Manrope', ...defaultTheme.fontFamily.sans],
-    },
-  },
-  variants: {
-    extend: {
-      borderWidth: ['focus'],
     },
   },
   plugins: [require("@tailwindcss/forms"), require('@tailwindcss/line-clamp'), require('@tailwindcss/typography')],

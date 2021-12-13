@@ -1,10 +1,10 @@
 {{-- Vue de la page, type de la page (classe css) pour conditions, classes de la page (body) --}}
-@extends('settings.layout', ['title' => 'Paramètres Sécurité', 'page_type' => 'security', 'body_classes' => 'bg-gray-200'])
+@extends('account.layout', ['title' => 'Sécurité | Compte', 'page_type' => 'security', 'body_classes' => 'bg-gray-200'])
 
 @section('content')
-<form class="divide-y divide-gray-200 lg:col-span-9" action="#" method="POST">
+<form class="lg:col-span-9" action="/settings/security" method="post">
   <!-- Section mot de passe -->
-  <div class="py-6 px-4 sm:p-6 lg:pb-8">
+  <div class="pt-6 px-4 sm:p-6 lg:pb-8">
     <div>
       <h2 class="text-xl leading-6 font-medium text-white">Mot de passe</h2>
       <p class="mt-1 text-sm text-gray-100">

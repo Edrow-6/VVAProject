@@ -26,14 +26,12 @@ class Controller
             $cache = __DIR__.'/../../storage/cache';
 
             if (Condition::isAuth()) {
-                $user = User::select(['id' => $_SESSION['id_u']])[0];
-                if ($user['avatar'] == 'NULL' || $user['avatar'] == null || $user['avatar'] == 0) {
+                if ($_SESSION['avatar'] == 'NULL' || $_SESSION['avatar'] == null || $_SESSION['avatar'] == 0) {
                     $avatar = 'https://www.rgd.fr/wp-content/uploads/2021/01/avatar-anonyme.png';
                 } else {
-                    $avatar = $user['avatar'];
-
+                    $avatar = $_SESSION['avatar'];
                 }
-            }
+            } else $avatar = '';
 
             $blade = new BladeOne($views, $cache, BladeOne::MODE_DEBUG);
             $blade->addAssetDict([
@@ -44,8 +42,7 @@ class Controller
                 'logo_teal_dark' => '../assets/images/brand/logo_teal_dark.png',
                 'logo_teal_light' => '../assets/images/brand/logo_teal_light.png',
                 'logo_dark' => '../assets/images/brand/logo_dark.png',
-                'logo_light' => '../assets/images/brand/logo_light.png',
-                'avatar' => $avatar ?? ''
+                'logo_light' => '../assets/images/brand/logo_light.png'
             ]);
         }
 
@@ -57,12 +54,12 @@ class Controller
             $blade->setAuth($_SESSION['id_u'], 'vacancier');
         }
 
-        $defaultParams = ['app' => $_ENV['APP_NAME']];
+        $defaultParams = ['app' => $_ENV['APP_NAME'], 'avatar' => $avatar ?? ''];
         $mergedParams = array_merge($params, $defaultParams);
 
         echo $blade->run($template, $mergedParams);
     }
-
+    
     /**
      * @return ValidationOne
      */

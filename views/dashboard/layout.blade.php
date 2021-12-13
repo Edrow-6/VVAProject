@@ -17,6 +17,7 @@
     </div>
   </div>
 
+  @include('dashboard.components.addEntry-button')
   @include('components.flash')
   @include('components.scripts')
 
@@ -38,6 +39,11 @@
     });
     tippy("#users", {
         content: "Utilisateurs",
+        placement: "left",
+        theme: "translucent",
+    });
+    tippy("#add-entry", {
+        content: "Créer",
         placement: "left",
         theme: "translucent",
     });

@@ -46,6 +46,13 @@ function database(): eftec\PdoOne
     return $pdo;
 }
 
+if (!function_exists('session')) {
+    function session(): \App\Utils\SessionManager
+    {
+        return new \App\Utils\SessionManager();
+    }
+}
+
 // Création de l'instance du Router.
 $router = new Router();
 
@@ -75,7 +82,7 @@ $router->mount('/*', function () use ($router) {
 });
 
 // Pages User Settings
-$router->before('GET|POST', '/settings/.*', function () {
+$router->before('GET|POST', '/account/.*', function () {
     if (!Condition::isAuth()) {
         header('location: /auth/login');
         exit();
@@ -88,15 +95,15 @@ $router->before('GET|POST', '/auth/login', function () {
     }
 });
 
-$router->mount('/settings', function () use ($router) {
-    $router->get('/account', 'SettingsController@account');
-    $router->post('/account', 'SettingsController@saveAccount');
+$router->mount('/account', function () use ($router) {
+    $router->get('/settings', 'Account\SettingsController@show');
+    $router->post('/settings', 'Account\SettingsController@save');
 
-    $router->get('/security', 'SettingsController@security');
-    $router->post('/security', 'SettingsController@saveSecurity');
+    $router->get('/security', 'Account\SecurityController@show');
+    $router->post('/security', 'Account\SecurityController@save');
 
-    $router->get('/billing', 'SettingsController@billing');
-    $router->post('/billing', 'SettingsController@saveBilling');
+    $router->get('/billing', 'Account\BillingController@show');
+    $router->post('/billing', 'Account\BillingController@save');
 });
 
 // Panel Administration
@@ -120,6 +127,7 @@ $router->mount('/dashboard', function () use ($router) {
     $router->post('/lodgings', 'Dashboard\LodgingsController@delete');
     $router->get('/bookings', 'Dashboard\BookingsController@show');
     $router->get('/users', 'Dashboard\UsersController@show');
+    $router->get('/add_entry', 'Dashboard\AddEntryController@show');
 });
 
 $router->run();

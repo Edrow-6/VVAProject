@@ -1,7 +1,7 @@
 @foreach($hebergements as $heb)
     <div id="archiveModal-{{ $heb['id'] }}" class="invisible fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div id="background" class="opacity-0 fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+            <div id="background" class="opacity-0 backdrop-filter backdrop-blur-sm fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
             {{-- Cet élément sert à inciter le navigateur à centrer le contenu de la popup. --}}
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
@@ -16,7 +16,7 @@
                     </button>
                 </div>
                 <div class="sm:flex sm:items-start">
-                    <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <div class="mx-auto shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 sm:mx-0 sm:h-10 sm:w-10">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                         </svg>
@@ -38,7 +38,7 @@
                             Archiver
                         </button>
                     </form>
-                    <button data-modal-close type="button" class="button-white-outline mt-3 w-full inline-flex justify-center px-4 py-2 sm:mt-0 sm:w-auto">
+                    <button data-modal-close type="button" class="button-white-outline mt-3 w-full inline-flex justify-center px-4 py-1.5 sm:mt-0 sm:w-auto">
                         Annuler
                     </button>
                 </div>

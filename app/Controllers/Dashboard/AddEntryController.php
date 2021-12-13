@@ -7,7 +7,7 @@ use App\Models\Lodging;
 use App\Utils\Condition;
 use Exception;
 
-class LodgingsController extends Controller
+class AddEntryController extends Controller
 {
     /**
      * @throws Exception
@@ -23,7 +23,7 @@ class LodgingsController extends Controller
                 break;
         }
 
-        $this->render('dashboard.pages.lodgings', [
+        $this->render('dashboard.pages.add-entry', [
             'nom' => $_SESSION['nom'] ?? '',
             'prenom' => $_SESSION['prenom'] ?? '',
             'email' => $_SESSION['email'] ?? '',

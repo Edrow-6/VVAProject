@@ -1,12 +1,12 @@
 @foreach($hebergements as $heb)
-  <div id="editModal-{{ $heb['id'] }}" class="h-0 opacity-0 transition duration-200 fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <div id="editModal-{{ $heb['id'] }}" class="invisible ransition duration-200 fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
     <div class="absolute inset-0 overflow-hidden">
       <!-- Background overlay, show/hide based on slide-over state. -->
-      <div class="absolute inset-0" aria-hidden="true"></div>
+      <div id="background" class="absolute inset-0" aria-hidden="true"></div>
 
-      <div class="fixed inset-y-0 pl-16 max-w-full right-0 flex">
+      <div id="foreground" class="opacity-0 fixed inset-y-0 pl-16 max-w-full right-0 flex">
         <div class="w-screen max-w-md">
-          <form class="h-full divide-y divide-gray-200 flex flex-col bg-gray-300 bg-opacity-75 backdrop-filter backdrop-blur-md shadow-xl">
+          <form class="h-full divide-y divide-gray-200 flex flex-col bg-gray-300 bg-opacity-75 backdrop-blur-md shadow-xl">
             <div class="flex-1 h-0 overflow-y-auto">
               <div class="py-6 px-4 bg-teal-700 sm:px-6">
                 <div class="flex items-center justify-between">
@@ -97,7 +97,7 @@
               </div>
 
             </div>
-            <div class="flex-shrink-0 px-4 py-4 flex justify-end">
+            <div class="shrink-0 px-4 py-4 flex justify-end">
               <button
                   data-modal-close
                   type="button"
