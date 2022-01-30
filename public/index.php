@@ -3,6 +3,10 @@
 use App\Utils\Condition;
 use Bramus\Router\Router;
 use eftec\PdoOne;
+<<<<<<< HEAD
+=======
+use Symfony\Component\ErrorHandler\Debug;
+>>>>>>> dev
 
 // Si l'id de session n'existe pas, alors démarrer la session.
 if (!session_id()) @session_start();
@@ -52,6 +56,34 @@ if (!function_exists('session')) {
                 }
             }
         }
+    }
+}
+
+$pdo = null;
+/**
+ * Initialisation de la base de données avec PDO
+ * @return eftec\PdoOne
+ * @throws Exception
+ */
+function database(): eftec\PdoOne
+{
+    // Fichier de configurations avec les variables .env
+    $config = require __DIR__.'/../config/app.php';
+
+    global $pdo;
+    if ($pdo === null) {
+        $pdo = new PdoOne("mysql", $config['db_host'], $config['db_user'], $config['db_pass'], $config['db_name']);
+        $pdo->logLevel = 4; // Utile pour debug et permet de trouver les problèmes en rapport avec les requêtes MySQL. 1 = prod | 4 = dev
+        $pdo->open();
+    }
+
+    return $pdo;
+}
+
+if (!function_exists('session')) {
+    function session(): \App\Utils\SessionManager
+    {
+        return new \App\Utils\SessionManager();
     }
 }
 

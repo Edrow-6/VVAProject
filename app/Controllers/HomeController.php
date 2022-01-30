@@ -11,9 +11,15 @@ class HomeController extends Controller
      */
     public function show() {
         $this->render('home.pages.home', [
+<<<<<<< HEAD
             'nom' => session('nom') ?? '',
             'prenom' => session('prenom') ?? '',
             'email' => session('email') ?? ''
+=======
+            'nom' => $_SESSION['nom'] ?? '',
+            'prenom' => $_SESSION['prenom'] ?? '',
+            'email' => $_SESSION['email'] ?? ''
+>>>>>>> dev
         ]);
     }
 }

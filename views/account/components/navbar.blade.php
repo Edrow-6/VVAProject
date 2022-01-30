@@ -79,7 +79,11 @@
         @auth
           <div x-data="{ userMenu: false }" class="ml-4 relative shrink-0">
             <div>
+<<<<<<< HEAD
               <button data-dropdown="user-menu" type="button" @click="userMenu = !userMenu" class="transition duration-75 bg-transparent rounded-md flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" aria-expanded="false" aria-haspopup="true">
+=======
+              <button type="button" @click="userMenu = !userMenu" class="transition duration-75 bg-transparent rounded-md flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+>>>>>>> dev
                 <span class="sr-only">Ouvrir le menu utilisateur</span>
                 <img class="h-8 w-8 rounded-full" src="{{ $avatar }}" alt="">
                 <svg xmlns="http://www.w3.org/2000/svg" :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="h-5 w-5 text-gray-400 mx-2 transition-transform duration-200 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
@@ -88,7 +92,25 @@
               </button>
             </div>
 
+<<<<<<< HEAD
             <div id="user-menu" class="opacity-0 scale-95 z-20 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" tabindex="-1" cloak>
+=======
+            <div x-show="userMenu"
+                 @click.away="userMenu = false"
+                 x-transition:enter="transition ease-out duration-100"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-75"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="z-20 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                 role="menu"
+                 aria-orientation="vertical"
+                 aria-labelledby="user-menu-button"
+                 tabindex="-1"
+                 x-cloak
+            >
+>>>>>>> dev
               <!-- Active: "bg-gray-100", Not Active: "" -->
               @auth('admin')
                 <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>

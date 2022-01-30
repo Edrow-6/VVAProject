@@ -1,5 +1,9 @@
 @foreach($hebergements as $heb)
+<<<<<<< HEAD
   <div id="edit-{{ $heb['id'] }}" class="invisible ransition duration-200 fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+=======
+  <div id="editModal-{{ $heb['id'] }}" class="invisible ransition duration-200 fixed inset-0 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+>>>>>>> dev
     <div class="absolute inset-0 overflow-hidden">
       <!-- Background overlay, show/hide based on slide-over state. -->
       <div id="background" class="absolute inset-0" aria-hidden="true"></div>

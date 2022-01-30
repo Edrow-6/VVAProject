@@ -1,4 +1,5 @@
 <!-- Top nav-->
+<<<<<<< HEAD
 <header x-data="{ mainMenu: false }" class="shrink-0 relative h-16 bg-blue-900 flex items-center">
   <!-- Logo area -->
   <div class="absolute inset-y-0 left-0 lg:static lg:shrink-0">
@@ -8,6 +9,18 @@
         <svg class="shrink-0 text-blue-900" width="80" height="64" xmlns="http://www.w3.org/2000/svg">
           <g>
             <rect transform="rotate(39, 56.6667, 4.66666)" stroke-width="0" id="svg_3" height="64" width="136.81097" y="-27.33333" x="-11.73882" fill="currentColor" opacity="1"/>
+=======
+<header x-data="{ mainMenu: false }" class="shrink-0 relative h-16 bg-sky-900 flex items-center">
+  <!-- Logo area -->
+  <div class="absolute inset-y-0 left-0 lg:static lg:shrink-0">
+    <a href="#" class="flex items-center justify-center h-16 w-16 bg-sky-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600 lg:w-20">
+      <img class="h-8 w-auto z-10" src="@asset('logo_light')" alt="VVA">
+      <div class="absolute flex justify-center w-full">
+        <svg class="shrink-0" width="80" height="64" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <title>Slide</title>
+            <rect transform="rotate(39, 56.6667, 4.66666)" stroke-width="0" id="svg_3" height="64" width="136.81097" y="-27.33333" x="-11.73882" fill="#0c4a6e" opacity="1"/>
+>>>>>>> dev
           </g>
         </svg>
       </div>
@@ -17,7 +30,11 @@
   <!-- Menu button area -->
   <div class="absolute inset-y-0 right-0 pr-4 flex items-center sm:pr-6 lg:hidden">
     <!-- Mobile menu button -->
+<<<<<<< HEAD
     <button type="button" @click="mainMenu = !mainMenu" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-blue-200 hover:text-white hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600">
+=======
+    <button type="button" @click="mainMenu = !mainMenu" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-sky-200 hover:text-white hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600">
+>>>>>>> dev
       <span class="sr-only">Ouvrir le menu principal</span>
       <!-- Heroicon name: outline/menu -->
       <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -29,9 +46,15 @@
   <!-- Desktop nav area -->
   <div class="hidden lg:min-w-0 lg:flex-1 lg:flex lg:items-center lg:justify-between">
     <div class="min-w-0 flex-1">
+<<<<<<< HEAD
       <div class="max-w-2xl relative text-white focus-within:text-blue-200">
         <label for="search" class="sr-only">Rechercher</label>
         <input id="search" type="search" placeholder="Rechercher ({{ $type_compte }})" class="transition duration-75 block w-full border-transparent pl-12 placeholder-white bg-blue-900 focus:border-transparent sm:text-sm focus:ring-0">
+=======
+      <div class="max-w-2xl relative text-white focus-within:text-sky-200">
+        <label for="search" class="sr-only">Rechercher</label>
+        <input id="search" type="search" placeholder="Rechercher ({{ $type_compte }})" class="transition duration-75 block w-full border-transparent pl-12 placeholder-white bg-sky-900 focus:border-transparent sm:text-sm focus:ring-0">
+>>>>>>> dev
         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -41,7 +64,11 @@
     </div>
     <div class="ml-10 pr-4 shrink-0 flex items-center space-x-10">
       <div class="flex items-center">
+<<<<<<< HEAD
         <a href="#" class="transition duration-75 shrink-0 rounded-md p-1 text-blue-200 hover:bg-blue-800 hover:text-white focus:outline-none focus:bg-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-900 focus:ring-white">
+=======
+        <a href="#" class="transition duration-75 shrink-0 rounded-md p-1 text-sky-200 hover:bg-sky-800 hover:text-white focus:outline-none focus:bg-sky-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-sky-900 focus:ring-white">
+>>>>>>> dev
           <span class="sr-only">Voir les notifications</span>
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -51,7 +78,11 @@
         <div x-data="{ userMenu: false }" class="relative shrink-0 ml-4">
           @auth
             <div>
+<<<<<<< HEAD
               <button type="button" data-dropdown="user-menu" class="transition duration-75 rounded-md flex text-sm text-white focus:outline-none focus:bg-blue-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-900 focus:ring-white" aria-expanded="false" aria-haspopup="true">
+=======
+              <button type="button" @click="userMenu = !userMenu" class="transition duration-75 rounded-md flex text-sm text-white focus:outline-none focus:bg-sky-900 focus:ring-2 focus:ring-offset-2 focus:ring-offset-sky-900 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+>>>>>>> dev
                 <span class="sr-only">Ouvrir le menu utilisateur</span>
                 <img class="rounded-full h-8 w-8" src="{{ $avatar }}" alt="">
                 <svg :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="text-white transition-transform duration-200 ml-1 h-5 w-5 mt-1.5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -60,7 +91,21 @@
               </button>
             </div>
 
+<<<<<<< HEAD
             <div id="user-menu" class="opacity-0 scale-95 origin-top-right absolute z-30 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" tabindex="-1" cloak>
+=======
+            <div
+                x-show="userMenu"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95"
+                class="origin-top-right absolute z-30 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                x-cloak
+            >
+>>>>>>> dev
               <!-- Active: "bg-gray-100", Not Active: "" -->
               <a href="/" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Retourner à l'accueil</a>
               <a href="/my-bookings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Mes réservations</a>
@@ -75,7 +120,11 @@
 
   <!-- Mobile menu, show/hide this `div` based on menu open/closed state -->
 
+<<<<<<< HEAD
   <div x-show="mainMenu" class="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" cloak>
+=======
+  <div x-show="mainMenu" class="fixed inset-0 z-40 lg:hidden" role="dialog" aria-modal="true" x-cloak>
+>>>>>>> dev
     <div
         x-transition:enter="transition-opacity ease-linear duration-300"
         x-transition:enter-start="opacity-0"
