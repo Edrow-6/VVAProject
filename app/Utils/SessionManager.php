@@ -3,10 +3,6 @@
 namespace App\Utils;
 
 use App\Utils\Interfaces\SessionInterface;
-<<<<<<< HEAD
-=======
-use JetBrains\PhpStorm\Pure;
->>>>>>> dev
 
 class SessionManager implements SessionInterface
 {
@@ -24,11 +20,7 @@ class SessionManager implements SessionInterface
         }
     }
 
-<<<<<<< HEAD
     public function get(string $key)
-=======
-    #[Pure] public function get(string $key)
->>>>>>> dev
     {
         if ($this->has($key)) {
             return $_SESSION[$key];

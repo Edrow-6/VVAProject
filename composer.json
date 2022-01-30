@@ -16,7 +16,6 @@
         }
     },
     "require": {
-<<<<<<< HEAD
         "eftec/bladeone": "^4.2",
         "tamtamchik/simple-flash": "^2.0",
         "spatie/ignition": "^1.0",
@@ -25,21 +24,5 @@
         "eftec/pdoone": "^2.20",
         "lasserafn/php-initial-avatar-generator": "^4.2",
         "symfony/error-handler": "^6.0"
-=======
-        "eftec/bladeone": "^4.1",
-        "bramus/router": "~1.5",
-        "eftec/pdoone": "^2.13",
-        "vlucas/phpdotenv": "^5.3",
-        "eftec/validationone": "^1.30",
-        "league/oauth2-github": "^3.0",
-        "league/oauth2-google": "^4.0",
-        "symfony/error-handler": "^5.3",
-        "lasserafn/php-initial-avatar-generator": "dev-master",
-        "tamtamchik/simple-flash": "3.0.x-dev",
-        "ext-curl": "*",
-        "ext-pdo": "*",
-        "monolog/monolog": "2.x-dev",
-        "algolia/algoliasearch-client-php": "dev-master"
->>>>>>> dev
     }
 }

@@ -10,11 +10,7 @@ class Condition
      */
     static function isAuth(): bool
     {
-<<<<<<< HEAD
         if (!empty(session('uid'))) {
-=======
-        if (!empty($_SESSION['id_u'])) {
->>>>>>> dev
             // Connecté
             return true;
         } else {
@@ -30,11 +26,7 @@ class Condition
      */
     static function asRole(array $role = []): bool
     {
-<<<<<<< HEAD
         if (!empty(session('uid'))) {
-=======
-        if (!empty($_SESSION['id_u'])) {
->>>>>>> dev
             // Connecté
             return match ($_SESSION['type_compte'] == in_array($_SESSION['type_compte'], $role)) {
                 false => false,
