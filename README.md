@@ -1,6 +1,7 @@
 <h1 align="center">Village Vacances Alpes</a></h1><p align="center"><b>○ <a href="https://vva.dawbee.fr">Demo</a> ○</b></h5>
 
-##### Un projet de BTS de 2ème année basé sur MyPHP-Framework
+##### Un projet de BTS de 2ème année basé sur MyPHP-Framework.
+##### Ce projet n'est pas basé sur Laravel dont il est fortement inspiré (Organisation MVC, Moteur de rendu).
 
 #### NOTE: Le site web est en développement certaines fonctionnalités peuvent ne pas fonctionner.
 

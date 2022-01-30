@@ -3,5 +3,7 @@
 node_modules/
 .env
 storage/cache/
+public/assets/images/uploads/
 vendor/
 VVAProject.zip
+notes.txt

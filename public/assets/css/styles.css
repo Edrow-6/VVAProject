@@ -1,14 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-[x-cloak] {
+[cloak] {
     display: none !important;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    background-color: transparent;
+}
+
+.bg-svg-mountains {
+    background-image: url('../images/brand/flat-mountains.svg');
+    background-position: bottom;
+    background-size: cover;
+}
+
+.bg-svg-lines {
+    background-image: url('../images/brand/curve-line.svg');
+    background-position: bottom;
+    background-size: cover;
+}
+
+.bg-svg-patterns {
+    background-image: url('../images/brand/colored-patterns.svg');
+    background-position: bottom;
+    background-size: cover;
 }

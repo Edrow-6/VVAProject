@@ -1,271 +1,149 @@
-<header x-data="{ stick: false }" class="sticky top-0 z-50">
-    <div x-data="{ open: false }" :class="{ 'shadow transition duration-200' : stick }" @scroll.window="stick = (window.pageYOffset > 20) ? true : false">
-      <div :class="{ 'py-3 bg-white' : stick, 'py-6 bg-gray-100' : !stick }" class="flex justify-between transition-spacing duration-200 items-center max-w-7xl mx-auto px-4 sm:px-6 md:justify-start md:space-x-10 lg:px-8">
-        <div class="flex justify-start lg:w-0 lg:flex-1">
+<nav id="main-navbar" class="sticky py-2 top-0 z-10 transition-spacing duration-200">
+  <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+    <div class="flex justify-between h-16">
+      <div class="flex px-2 lg:px-0">
+        <div class="shrink-0 flex items-center">
           <a href="/">
-            <span class="sr-only">VVA</span>
-            <img class="h-8 w-auto sm:h-10" src="@asset('logo')" alt="">
+            <img class="h-8 w-auto" src="@asset('logo_teal_dark')" alt="VVA">
           </a>
         </div>
-        <div class="-mr-2 -my-2 md:hidden">
-          <button @click="open = !open" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500" aria-expanded="false">
-            <span class="sr-only">Open menu</span>
-            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <div class="hidden lg:ml-6 lg:flex lg:space-x-8">
+          <!-- Current: "border-teal-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
+          <a href="/" class="@if($page_type == 'home') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
-          </button>
-        </div>
-        <nav class="hidden md:flex space-x-10">
-          
-          <div @click.away="open = false" class="relative">
-            <button @click="open = !open" type="button" class="text-gray-500 duration-150 group border-b-2 border-white hover:border-blue-300 inline-flex items-center text-base font-medium hover:text-gray-900 focus:text-gray-900" aria-expanded="false">
-              <span>Lorem Ipsum</span>
-              <svg :class="{ 'rotate-180': open, 'rotate-0': !open }" class="text-gray-400 transform transition-transform duration-200 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </button>
-
-            <div 
-              x-show="open" 
-              x-transition:enter="transition ease-out duration-200" 
-              x-transition:enter-start="opacity-0 translate-y-1" 
-              x-transition:enter-end="opacity-100 translate-y-0"
-              x-transition:leave="transition ease-in duration-150" 
-              x-transition:leave-start="opacity-100 translate-y-0" 
-              x-transition:leave-end="opacity-0 translate-y-1" 
-              class="absolute z-10 -ml-4 mt-3 transform w-screen max-w-md lg:max-w-2xl lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
-            >
-              <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
-                  <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white sm:h-12 sm:w-12">
-                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                      </svg>
-                    </div>
-                    <div class="ml-4">
-                      <p class="text-base font-medium text-gray-900">
-                        Lorem Ipsum
-                      </p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        lorem ipsum dolor sit amet, consectetur adipisicing elit
-                      </p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white sm:h-12 sm:w-12">
-                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                      </svg>
-                    </div>
-                    <div class="ml-4">
-                      <p class="text-base font-medium text-gray-900">
-                        Lorem Ipsum
-                      </p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        lorem ipsum dolor sit amet, consectetur adipisicing elit
-                      </p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white sm:h-12 sm:w-12">
-                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                      </svg>
-                    </div>
-                    <div class="ml-4">
-                      <p class="text-base font-medium text-gray-900">
-                        Lorem Ipsum
-                      </p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        lorem ipsum dolor sit amet, consectetur adipisicing elit
-                      </p>
-                    </div>
-                  </a>
-
-                  <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
-                    <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white sm:h-12 sm:w-12">
-                      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <div class="ml-4">
-                      <p class="text-base font-medium text-gray-900">
-                        Lorem Ipsum
-                      </p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        lorem ipsum dolor sit amet, consectetur adipisicing elit
-                      </p>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <a href="#" class="text-base duration-150 font-medium border-b-2 border-white hover:border-blue-300 text-gray-500 hover:text-gray-900">
-            Lorem Ipsum
           </a>
-
-          <a href="#" class="text-base duration-150 font-medium border-b-2 border-white hover:border-blue-300 text-gray-500 hover:text-gray-900">
-            Lorem Ipsum
+          <a href="/blog" class="@if($page_type == 'blog') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+            Blog
           </a>
-        </nav>
-        <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          @guest
-          <a href="/auth/login" class="ml-8 whitespace-nowrap transform hover:scale-105 hover:shadow duration-150 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600">
-            Se connecter
+          <a href="/lodging" class="@if($page_type == 'lodging') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+            Hébergements
           </a>
-          @endguest
-          @auth
-          <div x-data="{ openPersonnal: false }" class="relative">
-            <button @click="openPersonnal = !openPersonnal" type="button" class="ml-8 whitespace-nowrap transform hover:scale-105 hover:shadow duration-150 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600">
-              <span>{{ $nom.' '.$prenom }}</span>
-              <svg :class="{ 'rotate-180': openPersonnal, 'rotate-0': !openPersonnal }" class="text-white transform transition-transform duration-200 ml-2 h-5 w-5 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </button>
-            <div x-show="openPersonnal" 
-              x-transition:enter="transition ease-out duration-200" 
-              x-transition:enter-start="opacity-0 translate-y-1" 
-              x-transition:enter-end="opacity-100 translate-y-0"
-              x-transition:leave="transition ease-in duration-150" 
-              x-transition:leave-start="opacity-100 translate-y-0" 
-              x-transition:leave-end="opacity-0 translate-y-1" 
-              class="absolute z-10 -left-auto transform -translate-x-1/2 mt-3 px-2 w-screen max-w-sm sm:px-0"
-            >
-              <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                  <a href="/dash" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150">
-                    <svg class="flex-shrink-0 h-6 w-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                    <div class="ml-4">
-                      <p class="text-base font-medium text-gray-900">
-                        Tableau de Bord
-                      </p>
-                      <p class="mt-1 text-sm text-gray-500">
-                        Permet de voir et de gérer vos commandes et vos réservations.
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                <div class="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8 justify-center">
-                  <div class="flow-root">
-                    <a href="/settings/account" class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150">
-                      <i class="fad fa-cog fa-spin fa-swap-opacity fa-lg flex-shrink-0 text-gray-400"></i>
-                      <span class="ml-3">Paramètres</span>
-                    </a>
-                  </div>
-          
-                  <div class="flow-root">
-                    <a href="/auth/logout" class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150">
-                      <i class="fad fa-sign-out fa-lg flex-shrink-0 text-gray-400"></i>
-                      <span class="ml-3">Déconnexion</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          @endauth
+          <a href="/about" class="@if($page_type == 'about') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+            A propos
+          </a>
+          <a href="/faq" class="@if($page_type == 'faq') border-teal-500 text-gray-900 @else border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 @endif transition duration-75 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold">
+            FAQ
+          </a>
         </div>
       </div>
-
-      <div
-        x-show="open" 
-        x-transition:enter="duration-200 ease-out" 
-        x-transition:enter-start="opacity-0 scale-95" 
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="duration-100 ease-in" 
-        x-transition:leave-start="opacity-100 scale-100" 
-        x-transition:leave-end="opacity-0 scale-95" 
-        class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
-      >
-        <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-          <div class="pt-5 pb-6 px-5">
-            <div class="flex items-center justify-between">
-              <div>
-                <img class="h-8 w-auto" src="@asset('logo')" alt="VVA">
-              </div>
-              <div class="-mr-2">
-                <button @click="open = !open" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
-                  <span class="sr-only">Fermer le menu</span>
-                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+      <div class="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
+        <div class="max-w-lg w-full lg:max-w-xs">
+          <label for="search" class="sr-only">Rechercher</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
             </div>
-            <div class="mt-6">
-              <nav class="grid grid-cols-1 gap-7">
-                <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
-                  <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                    </svg>
-                  </div>
-                  <div class="ml-4 text-base font-medium text-gray-900">
-                    Lorem Ipsum Mobile
-                  </div>
-                </a>
-
-                <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
-                  <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                    </svg>
-                  </div>
-                  <div class="ml-4 text-base font-medium text-gray-900">
-                    Lorem Ipsum Mobile
-                  </div>
-                </a>
-
-                <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
-                  <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                    </svg>
-                  </div>
-                  <div class="ml-4 text-base font-medium text-gray-900">
-                    Lorem Ipsum Mobile
-                  </div>
-                </a>
-
-                <a href="#" class="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
-                  <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-600 text-white">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div class="ml-4 text-base font-medium text-gray-900">
-                    Lorem Ipsum Mobile
-                  </div>
-                </a>
-              </nav>
-            </div>
-          </div>
-          <div class="py-6 px-5">
-            <div class="grid grid-cols-2 gap-4">
-              <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                Lorem Ipsum Mobile
-              </a>
-
-              <a href="#" class="text-base font-medium text-gray-900 hover:text-gray-700">
-                Lorem Ipsum Mobile
-              </a>
-
-            </div>
-            {{-- A faire avec session --}}
-            <div class="mt-6">
-              <a href="/auth/login" class="w-full transform hover:scale-105 duration-150 flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600">
-                Se connecter
-              </a>
-            </div>
+            <input id="search" name="search" class="transition duration-75 block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="Rechercher" type="search">
           </div>
         </div>
+      </div>
+      <div class="flex items-center lg:hidden">
+        <!-- Mobile menu button -->
+        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="sr-only">Ouvrir le menu principal</span>
+          <!--
+            Icon when menu is closed.
+
+            Heroicon name: outline/menu
+
+            Menu open: "hidden", Menu closed: "block"
+          -->
+          <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!--
+            Icon when menu is open.
+
+            Heroicon name: outline/x
+
+            Menu open: "block", Menu closed: "hidden"
+          -->
+          <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:ml-4 lg:flex lg:items-center">
+        <button class="shrink-0 bg-transparent p-1 text-gray-400 transition duration-75 rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+          <span class="sr-only">Voir les notifications</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+        </button>
+
+        <!-- Menu déroulant du profil -->
+        @auth
+        <div class="ml-4 relative shrink-0">
+          <div>
+            <button type="button" data-dropdown="user-menu" class="transition duration-75 bg-transparent rounded-md flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500" aria-expanded="false" aria-haspopup="true">
+              <span class="sr-only">Ouvrir le menu utilisateur</span>
+              <img class="h-8 w-8 rounded-full" src="{{ $avatar }}" alt="">
+              <svg xmlns="http://www.w3.org/2000/svg" :class="{ 'rotate-180': userMenu, 'rotate-0': !userMenu }" class="h-5 w-5 text-gray-400 mx-2 transition-transform duration-200 group-hover:text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          <div id="user-menu" class="opacity-0 scale-95 z-20 origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu" tabindex="-1" cloak>
+            <!-- Active: "bg-gray-100", Not Active: "" -->
+            @auth('admin')
+              <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>
+            @elseauth('gestion')
+              <a href="/dashboard" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Tableau de bord</a>
+            @endauth
+            <a href="/my-bookings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Mes réservations</a>
+            <a href="/account/settings" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Mon compte</a>
+            <a href="/auth/logout" class="block py-2 px-4 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Se déconnecter</a>
+          </div>
+        </div>
+        @else
+          <div class="shrink-0 md:ml-4">
+            <a href="/auth/login" class="button-blue flex items-center px-4 py-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 -ml-1 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+              </svg>
+              <span class="drop-shadow">Se connecter</span>
+            </a>
+          </div>
+        @endauth
       </div>
     </div>
-  </header>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="lg:hidden" id="mobile-menu">
+    <div class="pt-2 pb-3 space-y-1">
+      <!-- Current: "bg-teal-50 border-teal-500 text-teal-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" -->
+      <a href="/blog" class="bg-teal-50 border-teal-500 text-teal-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Blog</a>
+      <a href="/lodgings" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Hébergements</a>
+      <a href="/about" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">A propos</a>
+      <a href="/faq" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">FAQ</a>
+    </div>
+    <div class="pt-4 pb-3 border-t border-gray-200">
+      <div class="flex items-center px-4">
+        <div class="shrink-0">
+          <img class="h-10 w-10 rounded-full" src="{{ $avatar }}" alt="">
+        </div>
+        <div class="ml-3">
+          <div class="text-base font-medium text-gray-800">{{ $nom.' '.$prenom }}</div>
+          <div class="text-sm font-medium text-gray-500">{{ $email }}</div>
+        </div>
+        <button class="ml-auto shrink-0 bg-white p-1 text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500">
+          <span class="sr-only">Voir les notifications</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-3 space-y-1">
+        <a href="/dashboard" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Tableau de bord</a>
+        <a href="/account/settings" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Mon compte</a>
+        <a href="/auth/logout" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Se déconnecter</a>
+      </div>
+    </div>
+  </div>
+</nav>
